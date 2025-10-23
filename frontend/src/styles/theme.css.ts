@@ -3,7 +3,7 @@ import { rem } from './utils';
 
 
 export const vars = createGlobalTheme(':root', {
-    color:{
+    color: {
         white: '#ffffff',
         black: '#1A1A1A',
         thunder: '#4D4D4D',
