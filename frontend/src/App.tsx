@@ -1,6 +1,4 @@
-import Calendar from "./Calendar"; // 👈 make sure the path is correct
-import "@fullcalendar/core/main.css";
-import "@fullcalendar/daygrid/main.css";
+import Calendar from "./components/Calendar/Calendar";
 
 function App() {
   return (
