@@ -8,7 +8,7 @@ import time
 
 options = Options()
 options.add_argument("--user-data-dir=/tmp/selenium_profile")  # avoid conflicts
-service = Service("/Users/vidhitamittal/Desktop/chromedriver")
+service = Service("") # input the path to your chromedriver here (example '/users/vidhita/desktop/chromedriver')
 
 driver = webdriver.Chrome(service=service, options=options)
 
