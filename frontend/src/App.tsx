@@ -1,8 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Signup, NoPage } from './pages';
 
-
-
 function App() {
     return (
         <Router>

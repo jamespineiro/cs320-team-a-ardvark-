@@ -1,5 +1,5 @@
 import React from 'react';
-import { button } from './Button.css';
+import { button } from './Button.css.ts';
 
 interface ButtonProps {
     text: string;

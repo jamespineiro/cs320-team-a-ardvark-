@@ -1,5 +1,4 @@
 // For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
 
 import js from '@eslint/js'
 import globals from 'globals'
@@ -21,6 +20,16 @@ export default defineConfig([
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+    },
+  },
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      'no-unused-vars': 'warn',
+      'no-undef': 'warn',
+      'react/prop-types': 'warn',
+      'react-hooks/exhaustive-deps': 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   },
 ])
