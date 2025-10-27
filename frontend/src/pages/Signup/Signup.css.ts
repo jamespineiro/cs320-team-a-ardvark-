@@ -3,50 +3,68 @@ import { vars } from "../../styles/theme.css";
 
 export const container = style({
     display: "flex",
+    height: "100vh",
+    width: "100%",
+});
+
+export const imageSection = style({
+    flex: 1,
+    height: "100%",
+    overflow: "hidden",
+    position: "relative",
+    display: "block",
+});
+
+export const image = style({
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    objectPosition: "center",
+
+});
+
+export const formSection = style({
+    flex: 1,
+    display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "100vh",
     backgroundColor: vars.color.white,
-    fontFamily: vars.typography.fontFamily,
+    height: "100%",
 });
 
 export const card = style({
-    width: "100%",
+    width: "80%",
     maxWidth: "400px",
-    padding: vars.spacing.lg,
-    textAlign: "center",
 });
 
 export const title = style({
-    fontSize: vars.typography.fontSize.xl,
-    fontWeight: vars.typography.fontWeight.bold,
-    color: vars.color.black,
-    marginBottom: vars.spacing.sm,
+    fontSize: "2rem",
+    fontWeight: "bold",
+    marginBottom: "0.5rem",
 });
 
 export const subtitle = style({
-    fontSize: vars.typography.fontSize.base,
-    color: vars.color.thunder,
-    marginBottom: vars.spacing.lg,
-    lineHeight: 1.4,
+    color: vars.color.grey,
+    marginBottom: "2rem",
 });
 
 export const form = style({
     display: "flex",
     flexDirection: "column",
-    gap: vars.spacing.md,
-    marginBottom: vars.spacing.lg,
+    gap: "1rem",
 });
 
 export const loginText = style({
-    fontSize: vars.typography.fontSize.sm,
-    color: vars.color.grey,
+    marginTop: "1rem",
+    textAlign: "center",
 });
 
 export const loginLink = style({
     color: vars.color.quietStorm,
     textDecoration: "none",
-    fontWeight: vars.typography.fontWeight.bold,
     ":hover": {
         textDecoration: "underline",
     },

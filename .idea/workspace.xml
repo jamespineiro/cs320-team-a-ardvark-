@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5ecfe591-f024-40d6-aad8-059e146a8680" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/src/assets/images/PencilsAndCalendar.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/Signup.css.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/SignupForm.css.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/SignupForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup/Signup.css.ts" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/Signup.css.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/pages/Signup/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/pages/Signup/Signup.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
