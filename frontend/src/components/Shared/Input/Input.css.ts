@@ -1,5 +1,8 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from '../../../styles/theme.css';
+import { rem } from '../../../styles/utils.ts';
+
+
 
 export const container = style({
     display: "flex",
@@ -11,21 +14,36 @@ export const container = style({
 export const label = style({
     fontFamily: vars.typography.fontFamily,
     fontSize: vars.typography.fontSize.sm,
-    fontWeight: vars.typography.fontWeight.bold,
+    fontWeight: vars.typography.fontWeight.regular,
     color: vars.color.black,
+
+    display: "block",
+    width: "100%",
+    textAlign: "left",
+    alignSelf: "flex-start",
+    marginBottom: vars.spacing.sm,
+    paddingLeft: vars.spacing.md,
+    paddingRight: vars.spacing.md,
+
 });
 
 export const inputWrapper = style({
     display: "flex",
-    alignItems: "center",
+    width: "430px",
+    padding: `${vars.spacing.sm} ${vars.spacing.sm} ${vars.spacing.sm} ${vars.spacing.md}`, // 8px 8px 8px 16px via theme tokens
     justifyContent: "space-between",
+    alignItems: "center",
     background: vars.color.antiFlash,
-    borderRadius: vars.radii.lg,
-    padding: `${vars.spacing.sm} ${vars.spacing.md}`,
+    borderRadius: rem(6),
+    boxSizing: "border-box",
+    gap: vars.spacing.sm,
 });
 
 export const input = style({
+    minWidth: 0,
     flex: 1,
+    boxSizing: "border-box",
+    padding: `${vars.spacing.sm} 0`,
     border: "none",
     outline: "none",
     background: "transparent",
@@ -37,6 +55,7 @@ export const input = style({
         color: vars.color.grey,
     },
 });
+
 
 export const iconButton = style({
     background: "none",

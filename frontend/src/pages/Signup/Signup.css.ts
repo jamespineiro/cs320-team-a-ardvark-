@@ -8,12 +8,14 @@ export const container = style({
 });
 
 export const imageSection = style({
-    flex: 1,
+    flex: "0 0 42%",
+    maxWidth: "42%",
     height: "100%",
     overflow: "hidden",
     position: "relative",
     display: "block",
 });
+
 
 export const image = style({
     position: "absolute",
@@ -33,6 +35,8 @@ export const formSection = style({
     alignItems: "center",
     backgroundColor: vars.color.white,
     height: "100%",
+    boxSizing: "border-box",
+    padding: vars.spacing.lg,
 });
 
 export const card = style({

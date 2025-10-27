@@ -46,7 +46,7 @@ export const loginText = style({
 export const loginLink = style({
     color: vars.color.quietStorm,
     textDecoration: "none",
-    fontWeight: vars.typography.fontWeight.bold,
+    fontWeight: vars.typography.fontWeight.regular,
     ":hover": {
         textDecoration: "underline",
     },

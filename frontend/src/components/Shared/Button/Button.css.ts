@@ -14,7 +14,7 @@ export const button = style({
     letterSpacing: '0.3px',
 
     border: 'none',
-    borderRadius: vars.radii.md,
+    borderRadius: rem(6),
     padding: `${vars.spacing.sm} ${vars.spacing.md}`,
     cursor: 'pointer',
     transition: 'background-color 0.2s ease',
