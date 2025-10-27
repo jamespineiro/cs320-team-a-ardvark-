@@ -1,7 +1,6 @@
 import { createGlobalTheme } from '@vanilla-extract/css'
 import { rem } from './utils';
 
-
 export const vars = createGlobalTheme(':root', {
     color: {
         white: '#ffffff',
@@ -9,11 +8,12 @@ export const vars = createGlobalTheme(':root', {
         thunder: '#4D4D4D',
         carbon: '#333333',
         grey: '#808080',
+        antiFlash: '#F2F2F2',
         quietStorm: '#2D5A6C',
     },
 
     typography: {
-        fontFamily: 'Arial, sans-serif',
+        fontFamily: 'Roboto, Arial, sans-serif',
         fontSize: {
             sm: rem(14),
             base: rem(16),
@@ -40,5 +40,3 @@ export const vars = createGlobalTheme(':root', {
         xl: rem(64),
     },
 })
-
-

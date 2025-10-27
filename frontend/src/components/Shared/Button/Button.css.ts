@@ -1,12 +1,18 @@
 import { style } from '@vanilla-extract/css';
 import { vars } from '../../../styles/theme.css';
+import { rem } from '../../../styles/utils';
 
 export const button = style({
     backgroundColor: vars.color.quietStorm,
     color: vars.color.white,
+
     fontFamily: vars.typography.fontFamily,
-    fontSize: vars.typography.fontSize.base,
+    fontSize: rem(15),
+    fontStyle: 'normal',
     fontWeight: vars.typography.fontWeight.bold,
+    lineHeight: rem(20),
+    letterSpacing: '0.3px',
+
     border: 'none',
     borderRadius: vars.radii.md,
     padding: `${vars.spacing.sm} ${vars.spacing.md}`,
