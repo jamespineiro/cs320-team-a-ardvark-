@@ -1,12 +1,15 @@
-import Calendar from "./components/Calendar/Calendar";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Signup, NoPage } from './pages';
 
 function App() {
-  return (
-    <div>
-      <h1>Welcome to My Calendar App</h1>
-      <Calendar /> {/* 👈 this renders your calendar */}
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/signup" element={<Signup />} />
+                <Route path="*" element={<NoPage />} />
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;
