@@ -1,4 +1,4 @@
-## Link to JIRA ticket: 
+## Link to JIRA ticket:
 <!-- Add link to JIRA ticket here -->
 
 ## Description
