@@ -1,15 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/theme.css";
-import { rem } from '../../styles/utils';
-
-export const container = style({
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    minHeight: "100vh",
-    backgroundColor: vars.color.white,
-    fontFamily: vars.typography.fontFamily,
-});
+import { rem } from "../../styles/utils";
 
 export const card = style({
     width: "100%",
@@ -17,7 +8,7 @@ export const card = style({
     padding: vars.spacing.lg,
     textAlign: "center",
     boxSizing: "border-box",
-    '@media': {
+    "@media": {
         [`(min-width: ${rem(1280)})`]: {
             width: rem(490),
             maxWidth: "none",
@@ -46,19 +37,13 @@ export const form = style({
     flexDirection: "column",
     gap: vars.spacing.md,
     marginBottom: vars.spacing.lg,
-    flex: 1,
-    overflowY: "auto",
 });
 
-export const loginText = style({
+export const forgotPassword = style({
+    textAlign: "right",
     fontSize: vars.typography.fontSize.sm,
-    color: vars.color.grey,
-});
-
-export const loginLink = style({
     color: vars.color.quietStorm,
     textDecoration: "none",
-    fontWeight: vars.typography.fontWeight.regular,
     ":hover": {
         textDecoration: "underline",
     },
@@ -67,11 +52,23 @@ export const loginLink = style({
 export const buttonWrapper = style({
     width: "100%",
     display: "block",
-    boxSizing: "border-box",
     padding: `${rem(32)} 0 ${rem(24)} 0`,
 });
 
 export const buttonFull = style({
     width: "100%",
-    boxSizing: "border-box",
+});
+
+export const signupText = style({
+    fontSize: vars.typography.fontSize.sm,
+    color: vars.color.grey,
+    textAlign: "center",
+});
+
+export const signupLink = style({
+    color: vars.color.quietStorm,
+    textDecoration: "none",
+    ":hover": {
+        textDecoration: "underline",
+    },
 });

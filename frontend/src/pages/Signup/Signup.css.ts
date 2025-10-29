@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/theme.css";
+import { rem } from '../../styles/utils';
 
 export const container = style({
     display: "flex",
@@ -16,7 +17,6 @@ export const imageSection = style({
     display: "block",
 });
 
-
 export const image = style({
     position: "absolute",
     top: 0,
@@ -25,7 +25,6 @@ export const image = style({
     height: "100%",
     objectFit: "cover",
     objectPosition: "center",
-
 });
 
 export const formSection = style({
@@ -37,11 +36,25 @@ export const formSection = style({
     height: "100%",
     boxSizing: "border-box",
     padding: vars.spacing.lg,
+    '@media': {
+        // larger padding on wide screens (converted to rem)
+        [`(min-width: ${rem(1280)})`]: {
+            padding: rem(64),
+        },
+    },
 });
 
 export const card = style({
     width: "80%",
-    maxWidth: "400px",
+    maxWidth: rem(400),
+    '@media': {
+        // Desktop / large screens: match Figma artboard size (converted to rem)
+        [`(min-width: ${rem(1280)})`]: {
+            width: rem(490),
+            maxWidth: "none",
+            height: rem(579),
+        },
+    },
 });
 
 export const title = style({
