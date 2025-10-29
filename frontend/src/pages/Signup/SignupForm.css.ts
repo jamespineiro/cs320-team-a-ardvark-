@@ -51,3 +51,14 @@ export const loginLink = style({
         textDecoration: "underline",
     },
 });
+
+export const buttonWrapper = style({
+    width: "100%",
+    display: "block",
+    marginTop: vars.spacing.md,
+});
+
+export const buttonFull = style({
+    width: "100%",
+    boxSizing: "border-box",
+});

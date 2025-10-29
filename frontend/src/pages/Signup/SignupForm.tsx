@@ -44,7 +44,10 @@ const SignupForm: React.FC = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
 
-                <Button type="submit" text="Sign up" />
+                <div className={styles.buttonWrapper}>
+                    <Button type="submit" text="Sign up" className={styles.buttonFull}/>
+                </div>
+
             </form>
 
             <p className={styles.loginText}>
