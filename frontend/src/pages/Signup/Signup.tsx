@@ -1,16 +1,24 @@
-//mport React, { useState } from "react";
-//import { useNavigate } from "react-router-dom";
-
-
+import React from "react";
+import * as styles from "./Signup.css";
+import SignupForm from "./SignupForm";
+import PencilsAndCalendar from "../../assets/images/PencilsAndCalendar.jpg";
 
 const Signup: React.FC = () => {
-
     return (
-        <div>
-            <h1>Welcome to Synchro</h1>
-            <p> Build your calendar and keep track of your assignments effortlessly</p>
+        <div className={styles.container}>
+            <div className={styles.imageSection}>
+                <img
+                    src={PencilsAndCalendar}
+                    alt="Pencils and Calendar"
+                    className={styles.image}
+                />
+            </div>
+
+            <div className={styles.formSection}>
+                <SignupForm />
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default Signup;
