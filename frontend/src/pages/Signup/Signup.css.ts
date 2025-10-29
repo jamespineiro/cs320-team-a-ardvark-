@@ -37,7 +37,6 @@ export const formSection = style({
     boxSizing: "border-box",
     padding: vars.spacing.lg,
     '@media': {
-        // larger padding on wide screens (converted to rem)
         [`(min-width: ${rem(1280)})`]: {
             padding: rem(64),
         },
@@ -48,7 +47,6 @@ export const card = style({
     width: "80%",
     maxWidth: rem(400),
     '@media': {
-        // Desktop / large screens: match Figma artboard size (converted to rem)
         [`(min-width: ${rem(1280)})`]: {
             width: rem(490),
             maxWidth: "none",
