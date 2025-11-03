@@ -1,34 +1,39 @@
-// Calendar.css.ts
-import { style } from '@vanilla-extract/css';
-import { vars } from '../../styles/theme.css'; // adjust path as needed
+import { style, globalStyle } from '@vanilla-extract/css';
+import { vars } from '../../styles/theme.css'; // adjust path if needed
 
-export const calendarContainer = style({
-  backgroundColor: vars.color.antiFlash,
-  color: vars.color.black,
+// Wrapper around the calendar
+export const calendarWrapper = style({
+  backgroundColor: vars.color.white,
   borderRadius: vars.radii.md,
   padding: vars.spacing.md,
-  boxShadow: `0 2px 8px ${vars.color.grey}`,
 });
 
-export const calendarHeader = style({
+// FullCalendar header buttons
+globalStyle('.fc .fc-toolbar button', {
   backgroundColor: vars.color.quietStorm,
   color: vars.color.white,
-  fontFamily: vars.typography.fontFamily,
-  fontSize: vars.typography.fontSize.lg,
-  fontWeight: vars.typography.fontWeight.bold,
-  padding: vars.spacing.sm,
-  borderRadius: `${vars.radii.sm} ${vars.radii.sm} 0 0`,
+  border: 'none',
+  borderRadius: vars.radii.sm,
+  padding: '0.25rem 0.5rem',
+  margin: '0 0.25rem',
+  cursor: 'pointer',
 });
 
-export const calendarDay = style({
-  border: `1px solid ${vars.color.grey}`,
-  padding: vars.spacing.sm,
-  textAlign: 'center',
-  cursor: 'pointer',
-  transition: 'background-color 0.2s ease',
+globalStyle('.fc .fc-toolbar button:hover', {
+  backgroundColor: vars.color.thunder,
+});
 
-  ':hover': {
-    backgroundColor: vars.color.thunder,
-    color: vars.color.white,
-  },
+// Calendar grid and day cells
+globalStyle('.fc .fc-daygrid-day', {
+  backgroundColor: vars.color.antiFlash,
+  border: `1px solid ${vars.color.grey}`,
+});
+
+// FullCalendar events
+globalStyle('.fc-event', {
+  backgroundColor: vars.color.quietStorm,
+  color: vars.color.white,
+  borderRadius: vars.radii.sm,
+  padding: '0.25rem 0.5rem',
+  fontWeight: 500,
 });
