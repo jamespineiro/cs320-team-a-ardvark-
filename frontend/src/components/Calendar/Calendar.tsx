@@ -6,11 +6,11 @@ import listPlugin from "@fullcalendar/list";
 import bootstrapPlugin from "@fullcalendar/bootstrap5";
 
 // Import Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 // Import vanilla-extract styles
-import * as styles from './Calendar.css';
+import * as styles from "./Calendar.css";
 
 export default function Calendar() {
   const events = [
@@ -29,12 +29,28 @@ export default function Calendar() {
   return (
     <div className={`${styles.calendarWrapper} flex-grow-1 p-3`}>
       <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin, bootstrapPlugin]}
+        plugins={[
+          dayGridPlugin,
+          timeGridPlugin,
+          interactionPlugin,
+          listPlugin,
+          bootstrapPlugin,
+        ]}
         themeSystem="bootstrap5"
         headerToolbar={{
           left: "prev,next today",
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+        }}
+        buttonIcons={false} // disables default icons
+        buttonText={{
+          prev: "<",
+          next: ">",
+          today: "Today",
+          month: "Month",
+          week: "Week",
+          day: "Day",
+          list: "List",
         }}
         initialView="dayGridMonth"
         editable={true}
