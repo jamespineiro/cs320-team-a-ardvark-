@@ -1,8 +1,12 @@
 import NavigationBar from "./NavigationBar/NavigationBar.tsx";
+import { Calendar } from "../../components";
 
 const Home: React.FC = () => {
     return (
-        <NavigationBar />
+        <div>
+            <NavigationBar />
+            <Calendar/>
+        </div>
     )
 }
 
