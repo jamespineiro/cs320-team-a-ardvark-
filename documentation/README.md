@@ -40,7 +40,7 @@ Start the Development Server:
 - npm run dev 
 
 Access the App:
-- Open http://localhost:3000 in your browser.
+- Open http://localhost:3000 in your browser
 
 
 ## Example Workflow
@@ -71,7 +71,7 @@ This project is licensed under the MIT License.
 
 Repository name and URL (replace placeholder in the clone command).
 
-Tech stack details — confirm exactly what backend/database you’re using.
+Tech stack details — confirm exactly what backend/database we’re using.
 
 Setup instructions — include any .env file requirements, API keys, or config steps.
 
