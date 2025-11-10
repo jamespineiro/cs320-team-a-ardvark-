@@ -1,35 +1,35 @@
-Overview
+# Overview
 
 The Student Deadline Calendar is a web application that automatically compiles all of a student’s assignment deadlines from multiple academic platforms — such as Canvas and Gradescope — into a single, unified calendar view.
 
 Students can then export their personalized calendar as an .ics file, a standard format supported by calendar apps like Google Calendar, Outlook, and Apple Calendar. “An .ics file is a standard, plain-text file format for sharing calendar events between different applications.” — Google AI Overview
 
 
-Features
+## Features
 
-Automatically fetch and interpret due dates from sites like Canvas, Gradescope, and Campuswire
+- Automatically fetch and interpret due dates from sites like Canvas, Gradescope, and Campuswire
 
-Create a web interface to display all the user’s due dates in one calendar
+- Create a web interface to display all the user’s due dates in one calendar
 
-Notify the user when a due date is approaching
+- Notify the user when a due date is approaching
 
-Allow exporting due dates to Google Calendar, Microsoft Outlook, Apple Calendar App (or any calendar of user’s choice) accurately with details
+- Allow exporting due dates to Google Calendar, Microsoft Outlook, Apple Calendar App (or any calendar of user’s choice) accurately with details
 
 
-Tech Stack
+## Tech Stack
 
-Frontend: React + Typescript
+- Frontend: React + Typescript
 
-Backend: Node.js/Flask/Django + Python
+- Backend: Node.js/Flask/Django + Python
 
-Data Storage: MongoDB
+- Data Storage: MongoDB
 
-Calendar Library: FullCalendar.js
+- Calendar Library: FullCalendar.js
 
 
 Getting Started
 
-Clone the Repo:
+Clone the Repo: 
 git clone https://github.com/your-username/student-deadline-calendar.git //change this
 cd student-deadline-calendar                                             //change this
 
@@ -67,7 +67,7 @@ This project is licensed under the MIT License.
 
 
 
-Here’s what’s missing or that you’ll need to fill in before you submit/publish the README:
+Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
 
 Repository name and URL (replace placeholder in the clone command).
 
@@ -79,6 +79,6 @@ Screenshots or demo GIF — show what the calendar looks like.
 
 License file — add an actual LICENSE file (MIT or similar).
 
-Team member info — names and optionally links (GitHub, LinkedIn).
+Team member info — optionally links (GitHub, LinkedIn).
 
 API integration section — a short explanation of how you connect to Canvas and Gradescope (OAuth, tokens, etc.).
