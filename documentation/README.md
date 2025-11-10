@@ -27,23 +27,23 @@ Students can then export their personalized calendar as an .ics file, a standard
 - Calendar Library: FullCalendar.js
 
 
-Getting Started
+## Getting Started
 
 Clone the Repo: 
-git clone https://github.com/your-username/student-deadline-calendar.git //change this
-cd student-deadline-calendar                                             //change this
+- git clone https://github.com/your-username/student-deadline-calendar.git //change this
+- cd student-deadline-calendar                                             //change this
 
 Install Dependencies:
-npm install 
+- npm install 
 
 Start the Development Server:
-npm run dev 
+- npm run dev 
 
 Access the App:
-Open http://localhost:3000 in your browser.
+- Open http://localhost:3000 in your browser.
 
 
-Example Workflow
+## Example Workflow
 
 1. User signs in and connects their Canvas and Gradescope accounts.
 
@@ -54,20 +54,20 @@ Example Workflow
 4. User clicks “Export Calendar” → downloads an .ics file.
 
 
-Contributors
+## Contributors
 
 Team Aardvark
 (James Pineiro, Nicholas Carlone, Keerthi Chebrolu, Arnav Gupta, Johan Lakshmanan, Tory Leone, Vidhita Mittal)
 
 
-License
+## License
 
 This project is licensed under the MIT License.
 
 
 
 
-Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
+## Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
 
 Repository name and URL (replace placeholder in the clone command).
 
