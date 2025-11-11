@@ -35,27 +35,26 @@ Students can view, filter, and export their deadlines as an .ics file for use wi
 
 ## Set Up and Installation
 
-1. Navigate to the frontend folder
+Navigate to the frontend folder
 
-cd frontend
+- cd frontend
 
-2. Install dependencies
+Install dependencies
 
-npm install
+- npm install
 
-3. Configure environment variables
+Configure environment variables
 
 // Create a .env file in the frontend directory with the following keys (adjust as needed):
 
-VITE_API_BASE_URL=http://localhost:3000/api
+- VITE_API_BASE_URL=http://localhost:3000/api
 
-This URL should point to your backend server’s API root.
+/ This URL should point to your backend server’s API root.
 
 4. Run the development server
 
-npm run dev
-
-Then open http://localhost:3000 in your browser.
+- npm run dev
+- Then open http://localhost:5173 in your browser.
 
 
 ## Available Scripts
