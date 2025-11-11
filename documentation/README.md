@@ -30,8 +30,8 @@ Students can then export their personalized calendar as an .ics file, a standard
 ## Getting Started
 
 Clone the Repo: 
-- git clone https://github.com/your-username/student-deadline-calendar.git //change this
-- cd student-deadline-calendar                                             //change this
+- git clone https://github.com/jamespineiro/cs320-team-a-ardvark-.git 
+- cd cs320-team-a-ardvark
 
 Install Dependencies:
 - npm install 
@@ -57,7 +57,7 @@ Access the App:
 
 ### Login/Sign Up Page
 
-![alt text](image.png)
+![alt text](LogInPage.png)
 
 ### Home Page
 
@@ -71,14 +71,12 @@ Team Aardvark
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](./LICENSE).
 
 
 
 
 ## Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
-
-Repository name and URL (replace placeholder in the clone command).
 
 Tech stack details — confirm exactly what backend/database we’re using.
 
@@ -88,6 +86,6 @@ Screenshots or demo GIF — show what the calendar looks like.
 
 License file — add an actual LICENSE file (MIT or similar).
 
-Team member info — optionally links (GitHub, LinkedIn).
+(Maybe) Team member info — optionally links (GitHub, LinkedIn).
 
-API integration section — a short explanation of how you connect to Canvas and Gradescope (OAuth, tokens, etc.).
+(Maybe) API integration section — a short explanation of how you connect to Canvas and Gradescope (OAuth, tokens, etc.).

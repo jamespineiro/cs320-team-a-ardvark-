@@ -5,6 +5,7 @@ The app provides students with a unified calendar that displays all assignment d
 
 Students can view, filter, and export their deadlines as an .ics file for use with Google Calendar, Outlook, or Apple Calendar.
 
+
 ## Features
 
 - Interactive Calendar View using FullCalendar
@@ -19,6 +20,7 @@ Students can view, filter, and export their deadlines as an .ics file for use wi
 
 - Client-side Routing via React Router
 
+
 ## Tech Stack
 
 - Framework -	React + TypeScript
@@ -29,6 +31,7 @@ Students can view, filter, and export their deadlines as an .ics file for use wi
 - Linting	- ESLint + TypeScript ESLint
 - UI Documentation - Storybook
 - Testing	- Vitest + Playwright (browser testing)
+
 
 ## Set Up and Installation
 
@@ -54,6 +57,7 @@ npm run dev
 
 Then open http://localhost:3000 in your browser.
 
+
 ## Available Scripts
 
 - npm run dev - Start the local development server (Vite)
@@ -62,6 +66,7 @@ Then open http://localhost:3000 in your browser.
 - npm run lint - Run ESLint for static code analysis
 - npm run storybook - Launch Storybook on port 6006 to view isolated UI components
 - npm run build-storybook - Build a static Storybook site for documentation/testing
+
 
 ## Screenshots
 
@@ -81,6 +86,7 @@ Then open http://localhost:3000 in your browser.
 
 ![alt text](LoadingScreen.png)
 
+
 ## Contributors
 
 Team Aardvark
@@ -89,4 +95,4 @@ Team Aardvark
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](./LICENSE).
