@@ -49,9 +49,9 @@ Configure environment variables
 
 - VITE_API_BASE_URL=http://localhost:3000/api
 
-/ This URL should point to your backend server’s API root.
+// This URL should point to your backend server’s API root.
 
-4. Run the development server
+Run the development server
 
 - npm run dev
 - Then open http://localhost:5173 in your browser.
