@@ -21,17 +21,6 @@ Students can view, filter, and export their deadlines as an .ics file for use wi
 
 ## Tech Stack
 
-- Framework
-Reach, Typescript
-
-- Calendar Component
-Fullcalendar - https://fullcalendar.io/
-
-- Build Tool
-Vite
-
-## Tech Stack
-
 - Framework -	React + TypeScript
 - Build Tool - Vite, https://vitejs.dev/
 - Calendar Component - FullCalendar, https://fullcalendar.io/
@@ -44,9 +33,11 @@ Vite
 ## Set Up and Installation
 
 1. Navigate to the frontend folder
+
 cd frontend
 
 2. Install dependencies
+
 npm install
 
 3. Configure environment variables
@@ -58,7 +49,9 @@ VITE_API_BASE_URL=http://localhost:3000/api
 This URL should point to your backend server’s API root.
 
 4. Run the development server
+
 npm run dev
+
 Then open http://localhost:3000 in your browser.
 
 ## Available Scripts
@@ -72,7 +65,17 @@ Then open http://localhost:3000 in your browser.
 
 ## Screenshots
 
+Calendar
 
+![alt text](image.png)
+
+Login Page
+
+![alt text](image-1.png)
+
+Sign Up Page
+
+![alt text](image-2.png)
 
 ## Contributors
 
