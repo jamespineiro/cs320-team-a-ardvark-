@@ -65,17 +65,21 @@ Then open http://localhost:3000 in your browser.
 
 ## Screenshots
 
-Calendar
+### Calendar
 
-![alt text](image.png)
+![alt text](Calendar.png)
 
-Login Page
+### Login Page
 
-![alt text](image-1.png)
+![alt text](LogInPage.png)
 
-Sign Up Page
+### Sign Up Page
 
-![alt text](image-2.png)
+![alt text](SignUpPage.png)
+
+### Loading Page
+
+![alt text](LoadingScreen.png)
 
 ## Contributors
 

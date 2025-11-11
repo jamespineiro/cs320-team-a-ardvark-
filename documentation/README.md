@@ -53,6 +53,15 @@ Access the App:
 
 4. User clicks “Export Calendar” → downloads an .ics file.
 
+## Screenshots
+
+### Login/Sign Up Page
+
+![alt text](image.png)
+
+### Home Page
+
+Image here
 
 ## Contributors
 
