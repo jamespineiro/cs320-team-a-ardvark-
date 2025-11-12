@@ -20,7 +20,7 @@ Students can then export their personalized calendar as an .ics file, a standard
 
 - Frontend: React + Typescript
 
-- Backend: Node.js/Flask/Django + Python
+- Backend: Flask + Python
 
 - Data Storage: MongoDB
 
