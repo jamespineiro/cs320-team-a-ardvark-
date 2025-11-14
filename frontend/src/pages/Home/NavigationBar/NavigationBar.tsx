@@ -7,10 +7,14 @@ import * as styles from "./NavigationBar.css";
 const NavigationBar: React.FC = () => {
     return (
         <div className={styles.container}>
-            <CalendarIcon/>
-            <h1>Synchro</h1>
-            <Button text="Log out"/>
+            <div className={styles.leftGroup}>
+                <CalendarIcon className={styles.logo}/>
+                <h1>Synchro</h1>
+            </div>
+
+            <Button className={styles.button} text="Log out"/>
         </div>
+
     )
 }
 

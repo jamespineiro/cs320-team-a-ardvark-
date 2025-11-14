@@ -1,11 +1,16 @@
 import NavigationBar from "./NavigationBar/NavigationBar.tsx";
 import { Calendar } from "../../components";
+import * as styles from "./Home.css";
+
+
 
 const Home: React.FC = () => {
     return (
-        <div>
+        <div className={styles.container}>
             <NavigationBar />
-            <Calendar/>
+            <div className={styles.calendarContainer}>
+                <Calendar/>
+            </div>
         </div>
     )
 }
