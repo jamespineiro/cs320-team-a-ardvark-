@@ -6,21 +6,27 @@ import { vars } from "../../../styles/theme.css";
 export const container = style({
     display: "flex",
     alignItems: "center",
-    //justifyContent: "flex-end",
     width: "100%",
-    padding: `${rem(16)} ${rem(32)}`,
+    padding: `${rem(2)} ${rem(32)}`,
     boxSizing: "border-box",
 })
 
+const logoSize = rem(50)
 export const logo = style({
     color: vars.color.quietStorm,
+    width: logoSize,
+    height: logoSize,
 })
 
 export const leftGroup = style({
     display: "flex",
     alignItems: "center",
-    gap: rem(12),
+    gap: rem(4),
     marginRight: rem(24),
+})
+
+export const title = style({
+    paddingTop: rem(10),
 })
 
 export const button = style({

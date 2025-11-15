@@ -9,7 +9,7 @@ const NavigationBar: React.FC = () => {
         <div className={styles.container}>
             <div className={styles.leftGroup}>
                 <CalendarIcon className={styles.logo}/>
-                <h1>Synchro</h1>
+                <h1 className={styles.title}>Synchro</h1>
             </div>
 
             <Button className={styles.button} text="Log out"/>
