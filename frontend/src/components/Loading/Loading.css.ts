@@ -7,9 +7,16 @@ export const spin = keyframes({
 });
 
 export const loaderContainer = style({
-    display: "inline-block",
     lineHeight: 0,
-    position: "relative",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    width: "100vw",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    zIndex: 9999,
 });
 
 export const loader = style({
@@ -34,3 +41,4 @@ export const srOnly = style({
     whiteSpace: "nowrap",
     border: 0,
 });
+
