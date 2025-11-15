@@ -19,7 +19,6 @@ export const vars = createGlobalTheme(':root', {
             base: rem(16),
             lg: rem(20),
             xl: rem(24),
-            xxl: rem(30),
         },
         fontWeight: {
             regular: '400',
