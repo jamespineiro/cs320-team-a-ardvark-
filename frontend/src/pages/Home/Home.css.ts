@@ -1,15 +1,19 @@
 import { style } from "@vanilla-extract/css";
 import { rem } from '../../styles/utils';
-// import { vars } from "../../styles/theme.css";
 
 export const container = style({
-    display: "block",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     width: "100%",
 });
 
-
-const paddingRightLeft = rem(200)
 export const calendarContainer = style({
-    padding: `${rem(2)} ${paddingRightLeft} ${rem(32)} ${paddingRightLeft}`,
+    width: "100%",
+    maxWidth: rem(880),
+    maxHeight: rem(714),
+    overflow: "hidden",
     boxSizing: "border-box",
+    margin: "0 auto",
+    padding: rem(2),
 });

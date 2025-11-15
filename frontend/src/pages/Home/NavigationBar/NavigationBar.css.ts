@@ -27,6 +27,9 @@ export const leftGroup = style({
 
 export const title = style({
     paddingTop: rem(10),
+    fontSize: vars.typography.fontSize.xxl,
+    fontWeight: "bold",
+    color: vars.color.black
 })
 
 export const button = style({
