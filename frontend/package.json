@@ -20,11 +20,12 @@
     "@fullcalendar/react": "^6.1.19",
     "@fullcalendar/timegrid": "^6.1.19",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.13.2",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-router-dom": "^7.9.4"
+    "react-router-dom": "^7.9.6"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.1.2",

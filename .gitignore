@@ -25,4 +25,7 @@ dist-ssr
 
 *storybook.log
 storybook-static
-/backend/.env
+
+# Environment variables
+.env
+backend/.env
