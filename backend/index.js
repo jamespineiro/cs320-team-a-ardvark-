@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express")
 const mongoose = require("mongoose")
 const cors = require("cors")
@@ -7,7 +8,13 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-mongoose.connect("mongodb://127.0.0.1:27017/employee");
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_CONNECTION);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+});
 
 app.post("/login", (req, res) => {
     const {email, password} = req.body;
@@ -25,13 +32,13 @@ app.post("/login", (req, res) => {
         })
 })
 
-app.post("/register", (req, res) => {
+app.post("/signup", (req, res) => {
     UserModel.create(req.body)
-        .then(employees => res.json(employees))
+        .then(users => res.json(users))
         .catch(err => res.json(err))
 })
 
 
-app.listen(3001, () => {
-    console.log("server is running")
+app.listen(4000, () => {
+    console.log(`Server listening on port 4000`);
 })
