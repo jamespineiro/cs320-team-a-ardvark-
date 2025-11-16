@@ -28,3 +28,4 @@ storybook-static
 
 # Environment variables
 .env
+backend/.env
