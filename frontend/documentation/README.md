@@ -74,10 +74,6 @@ Link for each page
 
 ## Screenshots
 
-### Calendar
-
-![alt text](Calendar.png)
-
 ### Login Page
 
 ![alt text](LogInPage.png)
@@ -89,6 +85,10 @@ Link for each page
 ### Loading Page
 
 ![alt text](LoadingScreen.png)
+
+### Home Page
+
+![alt text](HomePage.png)
 
 
 ## Contributors
