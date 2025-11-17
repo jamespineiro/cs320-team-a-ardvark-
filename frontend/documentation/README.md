@@ -56,6 +56,11 @@ Run the development server
 - npm run dev
 - Then open http://localhost:5173 in your browser.
 
+Link for each page
+- http://localhost:5173/login
+- http://localhost:5173/signup
+- http://localhost:5173/home
+
 
 ## Available Scripts
 

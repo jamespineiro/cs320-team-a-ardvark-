@@ -35,12 +35,13 @@ Clone the Repo:
 
 Install Dependencies:
 - npm install 
+- nvm use 20 (only do this if you have the wrong node version)
 
 Start the Development Server:
 - npm run dev 
 
 Access the App:
-- Open http://localhost:3000 in your browser
+- Open http://localhost:5173 in your browser
 
 
 ## Example Workflow
@@ -61,7 +62,7 @@ Access the App:
 
 ### Home Page
 
-Image here
+![alt text](HomePage.png)
 
 ## Contributors
 
@@ -80,7 +81,7 @@ This project is licensed under the [MIT License](./LICENSE).
 
 Tech stack details — confirm exactly what backend/database we’re using.
 
-Setup instructions — include any .env file requirements, API keys, or config steps.
+Setup instructions — eventually add a package.json file to root dir, include any .env file requirements, API keys, or config steps.
 
 Screenshots or demo GIF — show what the calendar looks like.
 
