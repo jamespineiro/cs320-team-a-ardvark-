@@ -42,6 +42,7 @@ Navigate to the frontend folder
 Install dependencies
 
 - npm install
+- nvm use 20 (only do this if you have the wrong node version)
 
 Configure environment variables
 
@@ -57,6 +58,7 @@ Run the development server
 - Then open http://localhost:5173 in your browser.
 
 Link for each page
+
 - http://localhost:5173/login
 - http://localhost:5173/signup
 - http://localhost:5173/home
