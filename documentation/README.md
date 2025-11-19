@@ -29,7 +29,7 @@ Students can then export their personalized calendar as an .ics file, a standard
 
 ## Getting Started
 
-For the moment, disregard what is written below for this section. If you would like a demo build, follow the Set Up steps located in both the frontend and backend README.md files.
+For the moment, disregard what is written below for this section. If you would like a demo build, follow the Set Up steps located in both the frontend and backend README.md files. Follow the instructions at the same time in a split terminal.
 
 Clone the Repo: 
 - git clone https://github.com/jamespineiro/cs320-team-a-ardvark-.git 

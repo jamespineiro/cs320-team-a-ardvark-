@@ -49,12 +49,6 @@ Run the development server
 - npm run dev
 - Then open http://localhost:5173 in your browser.
 
-Link for each page
-
-- http://localhost:5173/login
-- http://localhost:5173/signup
-- http://localhost:5173/home
-
 
 ## Available Scripts
 
@@ -101,7 +95,7 @@ This project is licensed under the [MIT License](./LICENSE).
 
 
 
-## Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
+## Here’s what’s missing or what we might need to fill in before we submit/publish the README:
 
 // Create a .env file in the frontend directory with the following keys (adjust as needed):
 
