@@ -44,14 +44,6 @@ Install dependencies
 - npm install
 - nvm use 20 (only do this if you have the wrong node version)
 
-Configure environment variables
-
-// Create a .env file in the frontend directory with the following keys (adjust as needed):
-
-- VITE_API_BASE_URL=http://localhost:3000/api
-
-// This URL should point to your backend server’s API root.
-
 Run the development server
 
 - npm run dev
@@ -102,3 +94,19 @@ Team Aardvark
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
+
+
+
+## Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
+
+// Create a .env file in the frontend directory with the following keys (adjust as needed):
+
+VITE_API_BASE_URL=http://localhost:3000/api
+
+// This URL should point to your backend server’s API root.
+
+// Add what is below to the startup section after the install dependencies step
+
+Configure environment variables
+
+- VITE_API_BASE_URL=http://localhost:3000/api

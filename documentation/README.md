@@ -79,14 +79,4 @@ This project is licensed under the [MIT License](./LICENSE).
 
 ## Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
 
-Tech stack details — confirm exactly what backend/database we’re using.
-
 Setup instructions — eventually add a package.json file to root dir, include any .env file requirements, API keys, or config steps.
-
-Screenshots or demo GIF — show what the calendar looks like.
-
-License file — add an actual LICENSE file (MIT or similar).
-
-(Maybe) Team member info — optionally links (GitHub, LinkedIn).
-
-(Maybe) API integration section — a short explanation of how you connect to Canvas and Gradescope (OAuth, tokens, etc.).
