@@ -1,13 +1,98 @@
-# cs320-team-a-ardvark-
-CS320 Group project GitHub Repo
+# Backend – Synchro
+This is the backend of the Synchro web application. The system aggregates assignment deadlines from multiple academic platforms (Canvas, Gradescope, etc.) and supports secure user authentication and optional calendar export.
+
+The backend includes:
+* A Node.js + Express server
+* MongoDB user authentication (AES-256 encryption)
+* A Python script for generating .ics calendar files
+* Secure environment variable configuration
+
+## Project Structure
+backend/ <br />
+│── index.js                # Main Express server <br />
+│── model/ <br />
+│     └── User.js           # Mongoose User schema <br />
+│── calendar_export.py      # Python ICS export script <br />
+│── .env                    # Environment variables (not committed) <br />
+│── package.json <br />
+
+## Features
+- Secure User Authentication
+    * AES-256-CBC encryption for passwords
+    * A unique IV stored per user to ensure proper decryption
+    * Login route decrypts stored passwords and validates credentials
+- MongoDB Integration
+    * Mongoose schema + model for user management
+    * Password + IV both stored securely for reversible encryption
+- ICS Calendar Export
+    * Python script using the ics library
+    * Converts deadlines into a .ics file for external calendars
+    * Compatible with Google Calendar, Apple Calendar, Outlook, etc.
+
+## Tech Stack
+* Node.js / Express
+* MongoDB / Mongoose
+* Crypto (AES-256-CBC)
+* Python 3
+* ICS Calendar Library
+
+## Environment Variables
+- Create a .env file inside the backend directory with: <br />
+- MONGODB_CONNECTION=<your_mongodb_uri> <br />
+- ENCRYPTION_KEY=<32_char_secret_key_or_phrase> <br />
+- ENCRYPTION_KEY is hashed automatically into a valid AES-256 key.
+- This file is intentionally not committed to the repository for security reasons.
+
+## Setup & Installation
+1. Navigate to the backend folder <br />
+   cd backend   <br />
+2. Install Dependencies <br />
+   npm install <br />
+3. Configure Environment Variables <br />
+   Create the .env file as described above. <br />
+4. Start the Backend Server <br />
+   npm run start <br />
+   Your backend will run at: http://localhost:4000 <br />
+
+## API Endpoints <br />
+1. POST /signup <br />
+Create a new user. <br />
+Request Body: <br />
+{ <br />
+  "email": "student@example.com", <br />
+  "password": "mypassword" <br />
+} <br />
+
+2. POST /login <br />
+Validate user credentials. <br />
+Request Body: <br />
+{ <br />
+  "email": "student@example.com", <br />
+  "password": "mypassword" <br />
+} <br />
+Possible Responses: <br />
+"Success"  <br />
+"The password is incorrect" <br />
+"No record existed" <br />
+
+## Calendar Export Script (Python)
+Run Script <br />
+python3 calendar_export.py <br />
+This will produce a deadlines.ics file. <br />
+
+## Sample Deadlines
+deadlines = [ <br />
+    { "course": "CS 320", "assignment": "Lab 5", "due_date": "2025-11-15T23:59:00" }, <br />
+    { "course": "CS 320", "assignment": "Project Report", "due_date": "2025-11-20T23:59:00" } <br />
+] <br />
+You can import the generated deadlines.ics file into any standard calendar application. <br />
+
+## Contributors
+
+Team Aardvark <br />
+(James Pineiro, Nicholas Carlone, Keerthi Chebrolu, Arnav Gupta, Johan Lakshmanan, Tory Leone, Vidhita Mittal)
 
 
+## License
 
-For the web scraping part:
-Almost definitely, your chrome version should be something like 141.0.(something)
-If it is some other version then go to this link and download the appropriate file: https://developer.chrome.com/docs/chromedriver/downloads/version-selection
-If it is this version then go to this link: https://googlechromelabs.github.io/chrome-for-testing/
-Once you are on the page it is pretty self explanatory. just download the stable version of the chromedriver (NOT the chrome). make sure you know exactly where you download it as the path to it has to be input in the scrapeGradescope.py file. 
-Once you have downloaded the driver, go to line 11 in the python file and add your path there. 
-once you have done these steps you should be able to run the python file from the run button at the top right corner of your screen. 
-click on the drop down next to the run button at the top and choose the 'run python file' option specifically because sometimes vsc chooses to "run code" instead and that will not result in the same thing
+This project is licensed under the [MIT License](./LICENSE).
