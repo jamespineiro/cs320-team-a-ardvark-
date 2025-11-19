@@ -68,6 +68,10 @@ Link for each page
 
 ## Screenshots
 
+### Launch Page
+
+// Launch Page here once we finish creating it
+
 ### Login Page
 
 ![alt text](LogInPage.png)
@@ -101,12 +105,10 @@ This project is licensed under the [MIT License](./LICENSE).
 
 // Create a .env file in the frontend directory with the following keys (adjust as needed):
 
-VITE_API_BASE_URL=http://localhost:3000/api
-
-// This URL should point to your backend server’s API root.
+VITE_API_BASE_URL=http://localhost:4000/api
 
 // Add what is below to the startup section after the install dependencies step
 
 Configure environment variables
 
-- VITE_API_BASE_URL=http://localhost:3000/api
+- VITE_API_BASE_URL=http://localhost:4000/api
