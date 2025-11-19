@@ -1,15 +1,28 @@
 import React, { useState } from "react";
 import { Input, Button } from "../../components";
 import * as styles from "./LoginForm.css.ts";
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
+    const BACKEND = "http://localhost:4000/login"
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate()
 
     const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        console.log({ email, password });
-    };
+        e.preventDefault()
+        axios.post(`${BACKEND}`, { email, password })
+            .then(result => {
+                console.log(result)
+                if(result.data === "Success"){
+                    navigate("/home")
+                }else{
+                    console.log("Wrong email or password")
+                }
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className={styles.card}>
@@ -51,7 +64,7 @@ const LoginForm: React.FC = () => {
                 </a>
             </p>
         </div>
-    );
-};
+    )
+}
 
 export default LoginForm;

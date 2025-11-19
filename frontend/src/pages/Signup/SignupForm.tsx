@@ -1,16 +1,30 @@
-import React, { useState } from "react";
-import { Input, Button } from "../../components";
-import * as styles from "./SignupForm.css.ts";
+import React, { useState } from "react"
+import { Input, Button } from "../../components"
+import * as styles from "./SignupForm.css.ts"
+import axios from 'axios'
+import { useNavigate } from "react-router-dom"
 
 const SignupForm: React.FC = () => {
+    const BACKEND = "http://localhost:4000/signup"
+    const navigate =  useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        console.log({ email, password, confirmPassword });
-    };
+        if(password !== confirmPassword)  {
+            console.log("Passwords do not match.")
+        } else {
+            axios.post(`${BACKEND}`, { email, password })
+                .then((result: any) => {console.log(result)
+                    navigate("/login")
+                })
+                .catch((err: any) => console.log(err))
+            console.log({ email, password, confirmPassword });
+        }
+    }
 
     return (
         <div className={styles.card}>
@@ -57,7 +71,7 @@ const SignupForm: React.FC = () => {
                 </a>
             </p>
         </div>
-    );
-};
+    )
+}
 
 export default SignupForm;
