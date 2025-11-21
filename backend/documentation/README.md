@@ -49,7 +49,7 @@ backend/ <br />
 2. Install Dependencies
    - npm install
 3. Configure Environment Variables 
-   Create the .env file as described above. 
+   - Create the .env file as described above. 
 4. Start the Backend Server 
    - npm run start 
    - Your backend will run at: http://localhost:4000 
@@ -58,7 +58,7 @@ backend/ <br />
 1. POST /signup 
 - Create a new user. 
 - Request Body: 
-- { <br />
+  { <br />
     "email": "student@example.com", <br />
     "password": "mypassword" <br />
   } 
@@ -66,7 +66,7 @@ backend/ <br />
 2. POST /login 
 - Validate user credentials. <br />
 - Request Body: <br />
-- { <br />
+  { <br />
     "email": "student@example.com", <br />
     "password": "mypassword" <br />
   } 
@@ -84,7 +84,8 @@ backend/ <br />
 - deadlines = [ <br />
     { "course": "CS 320", "assignment": "Lab 5", "due_date": "2025-11-15T23:59:00" }, <br />
     { "course": "CS 320", "assignment": "Project Report", "due_date": "2025-11-20T23:59:00" } <br />
-] <br />
+] 
+
 You can import the generated deadlines.ics file into any standard calendar application. 
 
 ## Contributors
