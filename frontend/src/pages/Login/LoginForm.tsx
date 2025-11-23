@@ -16,6 +16,7 @@ const LoginForm: React.FC = () => {
             .then(result => {
                 console.log(result)
                 if(result.data === "Success"){
+                    localStorage.setItem('synchro_logged_in', 'true')
                     navigate("/home")
                 }else{
                     console.log("Wrong email or password")
