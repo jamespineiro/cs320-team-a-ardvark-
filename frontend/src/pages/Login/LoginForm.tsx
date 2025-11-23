@@ -16,6 +16,8 @@ const LoginForm: React.FC = () => {
             .then(result => {
                 console.log(result)
                 if(result.data === "Success"){
+                    // mark user as logged in for client-side protection
+                    try { localStorage.setItem('synchro_logged_in', 'true'); } catch(e) { /* ignore */ }
                     navigate("/home")
                 }else{
                     console.log("Wrong email or password")
