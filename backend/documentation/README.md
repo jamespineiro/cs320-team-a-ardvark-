@@ -37,59 +37,61 @@ backend/ <br />
 * ICS Calendar Library
 
 ## Environment Variables
-- Create a .env file inside the backend directory with: <br />
-- MONGODB_CONNECTION=<your_mongodb_uri> <br />
-- ENCRYPTION_KEY=<32_char_secret_key_or_phrase> <br />
+- Create a .env file inside the backend directory with: 
+- MONGODB_CONNECTION=<your_mongodb_uri> 
+- ENCRYPTION_KEY=<32_char_secret_key_or_phrase> 
 - ENCRYPTION_KEY is hashed automatically into a valid AES-256 key.
 - This file is intentionally not committed to the repository for security reasons.
 
 ## Setup & Installation
-1. Navigate to the backend folder <br />
-   cd backend   <br />
-2. Install Dependencies <br />
-   npm install <br />
-3. Configure Environment Variables <br />
-   Create the .env file as described above. <br />
-4. Start the Backend Server <br />
-   npm run start <br />
-   Your backend will run at: http://localhost:4000 <br />
+1. Navigate to the backend folder 
+   - cd backend   
+2. Install Dependencies
+   - npm install
+3. Configure Environment Variables 
+   - Create the .env file as described above. 
+4. Start the Backend Server 
+   - npm run start 
+   - Your backend will run at: http://localhost:4000 
 
-## API Endpoints <br />
-1. POST /signup <br />
-Create a new user. <br />
-Request Body: <br />
-{ <br />
-  "email": "student@example.com", <br />
-  "password": "mypassword" <br />
-} <br />
+## API Endpoints 
+1. POST /signup 
+- Create a new user. 
+- Request Body: 
+  { <br />
+    "email": "student@example.com", <br />
+    "password": "mypassword" <br />
+  } 
 
-2. POST /login <br />
-Validate user credentials. <br />
-Request Body: <br />
-{ <br />
-  "email": "student@example.com", <br />
-  "password": "mypassword" <br />
-} <br />
-Possible Responses: <br />
-"Success"  <br />
-"The password is incorrect" <br />
-"No record existed" <br />
+2. POST /login 
+- Validate user credentials. <br />
+- Request Body: <br />
+  { <br />
+    "email": "student@example.com", <br />
+    "password": "mypassword" <br />
+  } 
+- Possible Responses: 
+  - "Success"  
+  - "The password is incorrect" 
+  - "No record existed"
 
 ## Calendar Export Script (Python)
-Run Script <br />
-python3 calendar_export.py <br />
-This will produce a deadlines.ics file. <br />
+- Run Script 
+- python3 calendar_export.py 
+- This will produce a deadlines.ics file. 
 
 ## Sample Deadlines
-deadlines = [ <br />
+- deadlines = [ <br />
     { "course": "CS 320", "assignment": "Lab 5", "due_date": "2025-11-15T23:59:00" }, <br />
     { "course": "CS 320", "assignment": "Project Report", "due_date": "2025-11-20T23:59:00" } <br />
-] <br />
-You can import the generated deadlines.ics file into any standard calendar application. <br />
+] 
+
+You can import the generated deadlines.ics file into any standard calendar application. 
 
 ## Contributors
 
-Team Aardvark <br />
+Team Aardvark 
+
 (James Pineiro, Nicholas Carlone, Keerthi Chebrolu, Arnav Gupta, Johan Lakshmanan, Tory Leone, Vidhita Mittal)
 
 
