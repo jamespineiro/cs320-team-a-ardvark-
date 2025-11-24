@@ -33,7 +33,7 @@ Clone the Repo:
 - git clone https://github.com/jamespineiro/cs320-team-a-ardvark-.git 
 - cd cs320-team-a-ardvark
 
-Set up a .env file
+Set up a .env file:
 - Steps for how to do this are listed in the backend README file
 
 Install Dependencies:
