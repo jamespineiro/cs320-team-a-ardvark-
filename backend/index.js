@@ -46,40 +46,73 @@ function decrypt(encryptedData, iv) {
     return decrypted;
 }
 
-// SIGNUP ROUTE
+// SIGNUP ROUTE (with validation + proper errors)
 app.post("/signup", async (req, res) => {
     const { email, password } = req.body;
 
-    const encrypted = encrypt(password);
+    // 1. Missing fields
+    if (!email || !password) {
+        return res.status(400).json({ error: "Email and password are required" });
+    }
+
+    // 2. Email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({ error: "Invalid email format" });
+    }
+
+    // 3. Weak password check (optional, but recommended)
+    if (password.length < 6) {
+        return res.status(400).json({ error: "Password must be at least 6 characters" });
+    }
 
     try {
+        // 4. Check if email already exists
+        const exists = await UserModel.findOne({ email });
+        if (exists) {
+            return res.status(409).json({ error: "Email already in use" });
+        }
+
+        // 5. Encrypt password and store user
+        const encrypted = encrypt(password);
+
         const user = await UserModel.create({
             email,
             password: encrypted.encryptedData,
-            iv: encrypted.iv,
+            iv: encrypted.iv
         });
 
-        res.json({ message: "User created", user });
+        return res.status(201).json({ message: "User created successfully" });
+
     } catch (err) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: "Server error: " + err.message });
     }
 });
 
-// LOGIN ROUTE
+// LOGIN ROUTE (with validation + proper errors)
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
 
+    // 1. Missing fields
+    if (!email || !password) {
+        return res.status(400).json({ error: "Email and password are required" });
+    }
+
+    // 2. Find user
     const user = await UserModel.findOne({ email });
+    if (!user) {
+        return res.status(401).json({ error: "Invalid email or password" });
+    }
 
-    if (!user) return res.json("No record existed");
-
+    // 3. Compare encrypted password
     const decryptedPassword = decrypt(user.password, user.iv);
 
-    if (decryptedPassword === password) {
-        return res.json("Success");
-    } else {
-        return res.json("The password is incorrect");
+    if (decryptedPassword !== password) {
+        return res.status(401).json({ error: "Invalid email or password" });
     }
+
+    // 4. Success
+    return res.json({ message: "Login successful" });
 });
 
 app.listen(4000, () => {
