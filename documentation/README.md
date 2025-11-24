@@ -81,9 +81,3 @@ Team Aardvark
 
 This project is licensed under the [MIT License](./LICENSE).
 
-
-
-
-## Here’s what’s missing or what we’ll need to fill in before we submit/publish the README:
-
-Setup instructions — eventually add a package.json file to root dir, include any .env file requirements, API keys, or config steps.

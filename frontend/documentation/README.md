@@ -92,17 +92,3 @@ Team Aardvark
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
-
-
-
-## Here’s what’s missing or what we might need to fill in before we submit/publish the README:
-
-// Create a .env file in the frontend directory with the following keys (adjust as needed):
-
-VITE_API_BASE_URL=http://localhost:4000/api
-
-// Add what is below to the startup section after the install dependencies step
-
-Configure environment variables
-
-- VITE_API_BASE_URL=http://localhost:4000/api
