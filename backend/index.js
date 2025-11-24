@@ -1,3 +1,4 @@
+const { spawn } = require('child_process');
 require('dotenv').config();
 const crypto = require('crypto');
 const express = require("express");
@@ -82,6 +83,53 @@ app.post("/login", async (req, res) => {
     }
 });
 
+// LINK GRADESCOPE ROUTE
+app.post("/link-gradescope", async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: "Email and password are required" });
+    }
+
+    // Spawn Python script with the user's credentials
+    const pythonProcess = spawn('python3', ['./gradescopeAPI.py', email, password]);
+
+    let dataString = '';
+    let errorString = '';
+
+    // Collecting data from Python script
+    pythonProcess.stdout.on('data', (data) => {
+        dataString += data.toString();
+    });
+
+    // Collect any errors
+    pythonProcess.stderr.on('data', (data) => {
+        errorString += data.toString();
+    });
+
+    pythonProcess.on('close', (code) => {
+        if (code !== 0) {
+            console.error("Python script failed:", errorString);
+            return res.status(500).json({ message: "Failed to connect to Gradescope", error: errorString });
+        }
+
+        try {
+            const result = JSON.parse(dataString);
+
+            if (result.error) {
+                return res.status(401).json({ message: "Gradescope login failed", detail: result.error });
+            }
+
+            // For now, just return the data to prove it works.
+            // Later, you will save 'result' to the database.
+            res.json({ message: "Sync Successful", assignments: result });
+
+        } catch (err) {
+            console.error("JSON Parse Error:", err);
+            res.status(500).json({ message: "Error parsing Gradescope data" });
+        }
+    });
+});
 app.listen(4000, () => {
     console.log(`Server listening on port 4000`);
 });
