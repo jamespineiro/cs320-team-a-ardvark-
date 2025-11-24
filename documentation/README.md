@@ -33,14 +33,15 @@ Clone the Repo:
 - git clone https://github.com/jamespineiro/cs320-team-a-ardvark-.git 
 - cd cs320-team-a-ardvark
 
-For the moment, disregard what is written below for this section. If you would like a demo build, follow the Set Up steps located in both the frontend and backend README.md files. Follow the instructions at the same time in a split terminal.
+Set up a .env file
+- Steps for how to do this are listed in the backend README file
 
 Install Dependencies:
 - npm install 
 - nvm use 20 (only do this if you have the wrong node version)
 
 Start the Development Server:
-- npm run dev 
+- npm start
 
 Access the App:
 - Open http://localhost:5173 in your browser
