@@ -64,7 +64,7 @@ Run the development server
 
 ### Launch Page
 
-// Launch Page here once we finish creating it
+![alt text](StartUpPage.png)
 
 ### Login Page
 
