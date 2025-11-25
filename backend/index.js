@@ -11,6 +11,11 @@ app.use(cors());
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_CONNECTION);
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+    console.log('Connected to MongoDB');
+});
 
 // Encryption Setup
 const algorithm = 'aes-256-cbc';
