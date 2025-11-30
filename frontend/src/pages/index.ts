@@ -3,5 +3,4 @@ export { default as Login } from './Login/Login';
 export { default as Home } from './Home/Home';
 export { default as NoPage } from './NoPage/NoPage';
 export { default as AddCanvas } from './AddCanvas/AddCanvas';
-export { default as CanvasCalendar } from './CanvasCalendar';
 export { default as Launch } from './Launch/Launch';
