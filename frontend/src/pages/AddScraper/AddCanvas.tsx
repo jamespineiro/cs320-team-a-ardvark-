@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, Button } from "../../components";
 import * as styles from "./AddScraper.css.ts";
-import NavigationBar from "../ScraperNavigationBar/ScraperNavigationBar.tsx";
+import NavigationBar from "./ScraperNavigationBar/ScraperNavigationBar.tsx";
 
 const AddCanvas: React.FC = () => {
     const BACKEND = "http://localhost:4000/fetch-canvas";

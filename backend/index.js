@@ -129,13 +129,14 @@ app.post("/fetch-gradescope", async (req, res) => {
     }
 
     // Spawn Python script with the user's credentials
-    const pythonProcess = spawn('python3', ['./gradescopeAPI.py', email, password]);
+    const pythonProcess = spawn('python3', ['./GradescopeDeadlines.py', email, password]);
 
     let dataString = '';
     let errorString = '';
 
     // Collecting data from Python script
     pythonProcess.stdout.on('data', (data) => {
+        console.log("PYTHON OUTPUT:", data.toString());
         dataString += data.toString();
     });
 

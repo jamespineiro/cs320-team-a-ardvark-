@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, Button } from "../../components";
 import * as styles from "./AddScraper.css.ts";
-import NavigationBar from "../ScraperNavigationBar/ScraperNavigationBar.tsx";
+import NavigationBar from "./ScraperNavigationBar/ScraperNavigationBar.tsx";
 
 const AddGradescope: React.FC = () => {
     const BACKEND = "http://localhost:4000/fetch-gradescope";
@@ -19,7 +19,7 @@ const AddGradescope: React.FC = () => {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                    username,
+                    email: username,
                     password,
                     user_id: localStorage.getItem("user_id")
                 })

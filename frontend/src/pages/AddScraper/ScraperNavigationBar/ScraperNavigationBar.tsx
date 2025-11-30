@@ -1,5 +1,5 @@
 import CalendarIcon from "./icons/CalendarIcon.tsx";
-import { Button } from "../../components";
+import { Button } from "../../../components";
 import React from "react";
 import * as styles from "./ScraperNavigationBar.css.ts";
 import { useNavigate } from "react-router-dom";
