@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
-import { vars } from "../../styles/theme.css";
-import { rem } from "../../styles/utils";
+import { vars } from "../../styles/theme.css.ts";
+import { rem } from "../../styles/utils.ts";
 
 export const wrapper = style({
     display: "flex",

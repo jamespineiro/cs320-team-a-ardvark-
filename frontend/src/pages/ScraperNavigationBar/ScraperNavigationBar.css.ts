@@ -1,6 +1,6 @@
 import { style } from "@vanilla-extract/css";
-import { rem } from '../../../styles/utils';
-import { vars } from "../../../styles/theme.css";
+import { rem } from '../../styles/utils.ts';
+import { vars } from "../../styles/theme.css.ts";
 
 
 export const container = style({

@@ -1,10 +1,10 @@
 import CalendarIcon from "./icons/CalendarIcon.tsx";
-import { Button } from "../../../components";
+import { Button } from "../../components";
 import React from "react";
-import * as styles from "./NavigationBar.css";
+import * as styles from "./ScraperNavigationBar.css.ts";
 import { useNavigate } from "react-router-dom";
 
-const NavigationBar: React.FC = () => {
+const ScraperNavigationBar: React.FC = () => {
     const navigate = useNavigate();
 
     const handleHome = () => {
@@ -27,4 +27,4 @@ const NavigationBar: React.FC = () => {
     );
 };
 
-export default NavigationBar;
+export default ScraperNavigationBar;
