@@ -7,12 +7,8 @@ import { useNavigate } from "react-router-dom";
 const NavigationBar: React.FC = () => {
     const navigate = useNavigate();
 
-    const handleAddCanvas = () => {
-        navigate("/addCanvas");
-    };
-
     const handleHome = () => {
-        navigate("/login");
+        navigate("/home");
     };
 
     return (
@@ -22,10 +18,11 @@ const NavigationBar: React.FC = () => {
                 <h1 className={styles.title}>Synchro</h1>
             </div>
 
-            <div className={styles.rightGroup}>
-                <Button text="Add Canvas" onClick={handleAddCanvas}/>
-                <Button text="Logout" onClick={handleHome}/>
-            </div>
+            <Button
+                className={styles.button}
+                text="Return Home"
+                onClick={handleHome}
+            />
         </div>
     );
 };

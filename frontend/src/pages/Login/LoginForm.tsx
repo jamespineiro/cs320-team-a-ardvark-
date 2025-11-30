@@ -19,6 +19,7 @@ const LoginForm: React.FC = () => {
       const res = await axios.post(BACKEND, { email, password });
 
       if (res.data?.message === "Login successful") {
+        localStorage.setItem("user_id", res.data.user_id);
         navigate("/home");
       } else if (res.data?.error) {
         setError(res.data.error);

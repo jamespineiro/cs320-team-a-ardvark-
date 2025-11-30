@@ -26,6 +26,7 @@ const SignupForm: React.FC = () => {
       const res = await axios.post(BACKEND, { email, password });
 
       if (res.data?.message === "User created successfully") {
+        localStorage.setItem("user_id", res.data.user_id);
         navigate("/login");
       } else if (res.data?.error) {
         setError(res.data.error);
