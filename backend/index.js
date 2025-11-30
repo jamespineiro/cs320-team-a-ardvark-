@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const CanvasModel = require("./model/Canvas");
 const UserModel = require("./model/User");
 
 const app = express();
@@ -10,12 +11,9 @@ app.use(express.json());
 app.use(cors());
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_CONNECTION);
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-    console.log('Connected to MongoDB');
-});
+mongoose.connect(process.env.MONGODB_CONNECTION)
+    .then(() => console.log("Connected to MongoDB"))
+    .catch((err) => console.error("MongoDB connection error:", err));
 
 // Encryption Setup
 const algorithm = 'aes-256-cbc';
@@ -118,6 +116,55 @@ app.post("/login", async (req, res) => {
 
     // 4. Success
     return res.json({ message: "Login successful" });
+});
+
+// Save canvas connection
+const { spawn } = require("child_process");
+app.post("/fetch", async (req, res) => {
+    const { base_url, access_token, course_id, user_id } = req.body;
+
+    if (!base_url || !access_token || !course_id || !user_id) {
+        return res.status(400).json({ detail: "Missing required fields" });
+    }
+
+    try {
+        const encrypted = encrypt(access_token);
+
+        const saved = await CanvasModel.create({
+            user_id,
+            base_url,
+            course_id,
+            access_token: encrypted.encryptedData,
+            iv: encrypted.iv
+        });
+
+        const python = spawn("python3", [
+            "canvasDeadlineExporter.py",
+            base_url,
+            access_token,
+            course_id
+        ]);
+
+        python.stdout.on("data", (data) => {
+            console.log("PYTHON:", data.toString());
+        });
+
+        python.stderr.on("data", (data) => {
+            console.error("PYTHON ERROR:", data.toString());
+        });
+
+        python.on("close", (code) => {
+            console.log(`Python script exited with code ${code}`);
+        });
+
+        return res.json({
+            message: "Canvas connection saved + Python script started",
+            id: saved._id
+        });
+
+    } catch (err) {
+        return res.status(500).json({ detail: "Server error: " + err.message });
+    }
 });
 
 app.listen(4000, () => {

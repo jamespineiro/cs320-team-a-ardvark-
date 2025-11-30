@@ -1,6 +1,7 @@
 import requests
 import csv
 import time
+import sys
 from urllib.parse import urlparse, urljoin
 from datetime import datetime
 
@@ -197,29 +198,19 @@ def export_to_ics(assignments, filename="canvas_due_dates.ics"):
 
 
 if __name__ == '__main__':
-    # 0. Get required inputs from the user
-    print("--- Canvas Due Date Exporter ---")
-    print("Please enter the required information below.")
-    
-    # Example: canvas.instructure.com or your-school.instructure.com
-    base_url = input("1. Enter your Canvas Base URL (e.g., myschool.instructure.com): ").strip()
-    
-    # Example: 1234567890abcdef...
-    access_token = input("2. Enter your Canvas Personal Access Token: ").strip()
-    
-    # Example: 12345
-    course_id = input("3. Enter the Course ID (the number in the course URL): ").strip()
-    
-    if not all([base_url, access_token, course_id]):
-        print("\nAll fields are required. Exiting.")
-    else:
-        try:
-            assignments = fetch_all_assignments(base_url, access_token, course_id)
-            
-            # Export to both CSV and ICS
-            export_to_csv(assignments)
-            export_to_ics(assignments)
-            
-        except Exception:
-            # Catch the raised error from fetch_all_assignments
-            print(f"\nOperation stopped due to a critical error. Please check your inputs and token permissions.")
+    if len(sys.argv) != 4:
+        print("PYTHON ERROR: Expected 3 arguments: base_url access_token course_id")
+        sys.exit(1)
+
+    base_url = sys.argv[1]
+    access_token = sys.argv[2]
+    course_id = sys.argv[3]
+
+    try:
+        assignments = fetch_all_assignments(base_url, access_token, course_id)
+        export_to_csv(assignments)
+        export_to_ics(assignments)
+
+    except Exception as e:
+        print(f"PYTHON FATAL: {e}")
+        sys.exit(1)
