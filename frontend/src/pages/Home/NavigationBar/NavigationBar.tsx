@@ -11,6 +11,10 @@ const NavigationBar: React.FC = () => {
         navigate("/addCanvas");
     };
 
+    const handleAddGradescope = () => {
+        navigate("/addGradescope");
+    };
+
     const handleHome = () => {
         navigate("/login");
     };
@@ -24,6 +28,7 @@ const NavigationBar: React.FC = () => {
 
             <div className={styles.rightGroup}>
                 <Button text="Add Canvas" onClick={handleAddCanvas}/>
+                <Button text="Add Gradescope" onClick={handleAddGradescope}/>
                 <Button text="Logout" onClick={handleHome}/>
             </div>
         </div>

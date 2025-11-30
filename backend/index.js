@@ -121,7 +121,7 @@ app.post("/login", async (req, res) => {
 
 
 // LINK GRADESCOPE ROUTE
-app.post("/link-gradescope", async (req, res) => {
+app.post("/fetch-gradescope", async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
@@ -169,7 +169,7 @@ app.post("/link-gradescope", async (req, res) => {
 });
 
 // Link Canvas Route
-app.post("/fetch", async (req, res) => {
+app.post("/fetch-canvas", async (req, res) => {
     const { base_url, access_token, course_id, user_id } = req.body;
 
     if (!base_url || !access_token || !course_id || !user_id) {
