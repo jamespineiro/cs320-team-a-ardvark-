@@ -1,4 +1,4 @@
-import React, { useState, Suspense, lazy, useEffect } from "react";
+import { useState, Suspense, lazy, useEffect } from "react";
 import NavigationBar from "./NavigationBar/NavigationBar";
 import * as styles from "./Home.css";
 import { Loading } from "../../components";

@@ -15,17 +15,15 @@ import {useEffect, useState} from "react";
 
 export default function Calendar() {
   const [events, setEvents] = useState([]);
-
+  const BACKEND = 'http://localhost:4000/mock-events';
   console.log("Calendar component mounted");
   useEffect(() => {
     async function loadEvents() {
       try {
-        const res = await fetch("/mock-events");
+        const res = await fetch(BACKEND);
         console.log("response status:", res.status);
         const data = await res.json();
         console.log("DATA:", data);
-        const text = await res.text();
-        console.log("RAW RESPONSE:", text);
         setEvents(data);
       } catch (err) {
         console.error("Failed to load events:", err);

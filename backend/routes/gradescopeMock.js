@@ -5,6 +5,7 @@ const router = express.Router();
  remove before production.
  */
 router.get('/mock-events', (req, res) => {
+    console.log("#MOCKING EVENT")
     const events = [
         {
             title: 'COMPSCI 230: 🛠️ Project 1, Data Representation - All',
