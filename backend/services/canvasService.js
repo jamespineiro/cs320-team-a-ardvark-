@@ -1,23 +1,24 @@
 const { spawn } = require("child_process");
 
-function fetchCanvasDeadlines(base_url, access_token, course_id) {
-    return new Promise((resolve, reject) => {
-        const python = spawn("python3", ["./python/canvasDeadlineExporter.py", base_url, access_token, course_id]);
-        let output = "";
-        let errorOutput = "";
+function runCanvas(base_url, token, course_id) {
+    const python = spawn("python3", [
+        "./python/canvasDeadlineExporter.py",
+        base_url,
+        token,
+        course_id,
+    ]);
 
-        python.stdout.on("data", (data) => (output += data.toString()));
-        python.stderr.on("data", (data) => (errorOutput += data.toString()));
+    python.stdout.on("data", (data) =>
+        console.log("PYTHON:", data.toString())
+    );
 
-        python.on("close", (code) => {
-            if (code !== 0) return reject(new Error(errorOutput));
-            try {
-                resolve(JSON.parse(output));
-            } catch (err) {
-                reject(err);
-            }
-        });
-    });
+    python.stderr.on("data", (data) =>
+        console.error("PYTHON ERROR:", data.toString())
+    );
+
+    python.on("close", (code) =>
+        console.log(`Python script exited with code ${code}`)
+    );
 }
 
-module.exports = { fetchCanvasDeadlines };
+module.exports = { runCanvas };
