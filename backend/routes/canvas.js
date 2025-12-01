@@ -9,7 +9,7 @@ router.post("/fetch", async (req, res) => {
     const { base_url, access_token, course_id, user_id } = req.body;
 
     if (!base_url || !access_token || !course_id || !user_id)
-        return res.status(400).json({ detail: "Missing fields" });
+        return res.status(400).json({ detail: "Missing required fields" });
 
     const encrypted = encrypt(access_token);
 
