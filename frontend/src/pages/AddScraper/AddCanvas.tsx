@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Input, Button } from "../../components";
-import * as styles from "./AddCanvas.css.ts";
-import NavigationBar from "./NavigationBar/NavigationBar";
+import * as styles from "./AddScraper.css.ts";
+import NavigationBar from "./ScraperNavigationBar/ScraperNavigationBar.tsx";
 
 const AddCanvas: React.FC = () => {
-    const BACKEND = "http://localhost:4000/fetch";
+    const BACKEND = "http://localhost:4000/fetch-canvas";
 
     const [baseUrl, setBaseUrl] = useState("");
     const [accessToken, setAccessToken] = useState("");
