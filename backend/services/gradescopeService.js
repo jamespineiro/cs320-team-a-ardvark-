@@ -2,7 +2,7 @@ const { spawn } = require("child_process");
 
 function runGradescope(email, password) {
     return new Promise((resolve, reject) => {
-        const python = spawn("python3", ["./python/gradescopeAPI.py", email, password]);
+        const python = spawn("python3", ["./python/GradescopeDeadlines.py", email, password]);
 
         let stdout = "";
         let stderr = "";
