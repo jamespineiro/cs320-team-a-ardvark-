@@ -3,7 +3,7 @@ const { runGradescope } = require("../services/gradescopeService");
 
 const router = express.Router();
 
-router.post("/link-gradescope", async (req, res) => {
+router.post("/fetch-gradescope", async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password)

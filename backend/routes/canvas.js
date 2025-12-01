@@ -5,7 +5,7 @@ const { runCanvas } = require("../services/canvasService");
 
 const router = express.Router();
 
-router.post("/fetch", async (req, res) => {
+router.post("/fetch-canvas", async (req, res) => {
     const { base_url, access_token, course_id, user_id } = req.body;
 
     if (!base_url || !access_token || !course_id || !user_id)

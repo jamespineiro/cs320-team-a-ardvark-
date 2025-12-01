@@ -18,7 +18,7 @@ mongoose
     .catch((err) => console.error("MongoDB connection error:", err));
 
 app.use("/", authRoutes);            // /signup, /login
-app.use("/", canvasRoutes);          // /fetch
-app.use("/", gradescopeRoutes);      // /link-gradescope
+app.use("/", canvasRoutes);          // /fetch-canvas
+app.use("/", gradescopeRoutes);      // /fetch-gradescope
 
 app.listen(4000, () => console.log("Server listening on port 4000"));
