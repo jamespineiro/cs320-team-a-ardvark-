@@ -51,7 +51,6 @@ def fetch_all_assignments(base_url, access_token, course_id, max_retries=5):
         data = response.json()
         all_assignments.extend(data)
 
-        # pagination
         url = None
         link_header = response.headers.get('Link')
         if link_header:
