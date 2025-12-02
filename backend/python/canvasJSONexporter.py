@@ -65,9 +65,8 @@ def fetch_all_assignments(base_url, access_token, course_id, max_retries=5):
 
     return all_assignments
 
-
+#Print JSON to stdout
 def print_json(assignments):
-    """Print JSON to stdout instead of writing to a file."""
     export_data = [a for a in assignments if a.get('name')]
     print(json.dumps(export_data, indent=4))
     return export_data
