@@ -1,6 +1,8 @@
 import pytest
 from unittest.mock import Mock
 from backend.python.GradescopeDeadlines import login, scrape_courses_and_assignments, BASE
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 def test_correct_login():
     session = Mock()
