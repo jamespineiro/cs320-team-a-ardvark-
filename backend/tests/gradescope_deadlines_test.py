@@ -22,7 +22,7 @@ def test_login_with_no_token():
     session.get.return_value = bad_page
     with pytest.raises(Exception) as err:
         login(session, "a", "b")
-    assert "Could not load login page" in str(err.value)
+    assert "Failed to load Login page" in str(err.value)
 
 def test_login_with_wrong_credentials():
     session = Mock()
@@ -35,7 +35,7 @@ def test_login_with_wrong_credentials():
     with pytest.raises(Exception) as err:
         login(session, "bad", "creds")
 
-    assert "login failed" in str(err.value)
+    assert "Login failed" in str(err.value)
 
 def test_scrape_zero_courses():
     session = Mock()
