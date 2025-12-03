@@ -5,13 +5,11 @@ const GradescopeAssignment = require("../model/GradescopeAssignmentSchema");
 
 const router = express.Router();
 
-// Middleware to verify authentication (optional - add if you want to enforce auth)
 function requireAuth(req, res, next) {
     const authHeader = req.headers.authorization;
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
         return res.status(401).json({ message: "Unauthorized" });
     }
-    // You could validate the sessionId here against your User model if needed
     next();
 }
 

@@ -83,7 +83,7 @@ export default function Calendar() {
             headerToolbar={{
               left: "prev,next today",
               center: "title",
-              right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+              right: "dayGridMonth,listWeek",
             }}
             buttonIcons={false}
             buttonText={{
@@ -91,8 +91,6 @@ export default function Calendar() {
               next: ">",
               today: "Today",
               month: "Month",
-              week: "Week",
-              day: "Day",
               list: "List",
             }}
             initialView="dayGridMonth"
