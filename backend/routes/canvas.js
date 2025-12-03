@@ -2,7 +2,8 @@ const express = require("express");
 const CanvasModel = require("../model/Canvas");
 const CanvasAssignment = require("../model/CanvasAssignmentSchema"); // You will create this
 const { encrypt } = require("../utils/encryption");
-const { runCanvasAndReturnJSON } = require("../services/canvasService"); // Updated service
+const { runCanvas } = require("../services/canvasService");
+
 const {
     parseCanvasForDB,
     parseCanvasToCalendar
@@ -44,11 +45,12 @@ router.post("/fetch-canvas", async (req, res) => {
         });
 
         // Run Python and get JSON
-        const pythonAssignments = await runCanvasAndReturnJSON(
+        const pythonAssignments = await runCanvas(
             base_url,
             access_token,
             course_id
         );
+
 
         // Parse for database
         const dbAssignments = parseCanvasForDB(
