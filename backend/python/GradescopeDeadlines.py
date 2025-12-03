@@ -41,7 +41,11 @@ def login(session, email, password):
     return session
 
 
-def scrape_courses_and_assignments(session):
+def scrape_courses_and_assignments(email, password):
+    # create session
+    session = requests.Session()
+    login(session, email, password)
+
     # 3. Scrape Courses & Assignments
     final_data = []
     soup = BeautifulSoup(session.get(BASE).text, 'html.parser')
@@ -82,13 +86,15 @@ def scrape_courses_and_assignments(session):
     # print(json.dumps(final_data))
 
 if __name__ == "__main__":
-    import sys
+    import sys, json
     if len(sys.argv) < 3:
         print(json.dumps({"error": "Missing credentials"}))
         sys.exit(1)
+    email, password = sys.argv[1], sys.argv[2]
     try:
-        data = main(sys.argv[1], sys.argv[2])
-        print(json.dumps(data))
+        final_data = scrape_courses_and_assignments(email, password)
+        # data = main(sys.argv[1], sys.argv[2])
+        print(json.dumps(final_data))
     except Exception as e:
         # Return the actual error message
         print(json.dumps({"error": f"Script Error: {str(e)}"}))
