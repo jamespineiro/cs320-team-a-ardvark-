@@ -4,6 +4,7 @@ import * as styles from "./LoginForm.css.ts";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ErrorPopup from "../../components/Shared/ErrorPopup/ErrorPopup";
+import { useAuth } from "../../auth/AuthProvider";
 
 const LoginForm: React.FC = () => {
   const BACKEND = "http://localhost:4000/login";
@@ -11,6 +12,7 @@ const LoginForm: React.FC = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");  // NEW
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +20,8 @@ const LoginForm: React.FC = () => {
     try {
       const res = await axios.post(BACKEND, { email, password });
 
-      if (res.data?.message === "Login successful") {
+      if (res.data?.message === "Login successful" && res.data?.sessionId) {
+        login(res.data.sessionId);
         localStorage.setItem("user_id", res.data.user_id);
         navigate("/home");
       } else if (res.data?.error) {

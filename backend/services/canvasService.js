@@ -2,7 +2,7 @@ const { spawn } = require("child_process");
 
 function runCanvas(base_url, token, course_id) {
     const python = spawn("python3", [
-        "./python/canvasDeadlineExporter.py",
+        "./python/canvasJSONexporter.py",
         base_url,
         token,
         course_id,
