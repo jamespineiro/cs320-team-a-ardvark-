@@ -45,11 +45,6 @@ export default function Calendar() {
           'Authorization': `Bearer ${sessionId}`
         };
 
-        // Load mock events
-        const mockRes = await fetch(`${BACKEND}/mock-events`, { headers });
-        const mockData: CalendarEvent[] = await mockRes.json();
-        console.log("Mock events:", mockData);
-
         // Load Gradescope events if user_id is available
         let gradescopeData: CalendarEvent[] = [];
         if (userId) {
@@ -63,9 +58,7 @@ export default function Calendar() {
           }
         }
 
-        // Combine both event sources
-        const allEvents: CalendarEvent[] = [...mockData, ...gradescopeData];
-        setEvents(allEvents);
+        setEvents(gradescopeData);
       } catch (err) {
         console.error("Failed to load events:", err);
       }

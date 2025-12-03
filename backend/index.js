@@ -6,7 +6,6 @@ require("dotenv").config();
 const authRoutes = require("./routes/auth");
 const canvasRoutes = require("./routes/canvas");
 const gradescopeRoutes = require("./routes/gradescope");
-const gradescopeMockRoute = require("./routes/gradescopeMock");
 
 const app = express();
 app.use(express.json());
@@ -21,7 +20,5 @@ mongoose
 app.use("/", authRoutes);            // /signup, /login
 app.use("/", canvasRoutes);          // /fetch-canvas
 app.use("/", gradescopeRoutes);      // /fetch-gradescope
-app.use("/", gradescopeMockRoute);      // /mock-events
-
 
 app.listen(4000, () => console.log("Server listening on port 4000"));
