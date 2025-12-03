@@ -7,7 +7,7 @@ const CanvasModel = {
   create: async (data) => ({ _id: "mock_id", ...data }),
 };
 const encrypt = (token) => ({ encryptedData: "encrypted_" + token, iv: "iv" });
-const runCanvas = (base_url, access_token, course_id) => {
+const runCanvas = () => {
   // Simulate running Python script
   return true;
 };
