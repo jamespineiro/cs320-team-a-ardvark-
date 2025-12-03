@@ -22,7 +22,7 @@ function parseGradescopeToCalendar(assignments) {
         });
 }
 
-//
+// Parse Gradescope assignments for database storage
 function parseGradescopeForDB(assignments, userId) {
     return assignments
         .filter(assignment => assignment.due_date) // Filter out null dates
