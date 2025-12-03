@@ -1,4 +1,8 @@
-// Parse Gradescope assignments into calendar event format
+/**
+ * Parse Gradescope assignments into calendar event format
+ * @param {Array} assignments - Raw assignments from Gradescope scraper
+ * @returns {Array} Calendar events in format { title, start }
+ */
 function parseGradescopeToCalendar(assignments) {
     return assignments
         .filter(assignment => assignment.due_date) // Filter out null dates
@@ -22,8 +26,13 @@ function parseGradescopeToCalendar(assignments) {
         });
 }
 
-// Parse Gradescope assignments for database storage
-function parseGradescopeForDB(assignments, userEmail) {
+/**
+ * Parse Gradescope assignments for database storage
+ * @param {Array} assignments - Raw assignments from Gradescope scraper
+ * @param {String} userId - User's MongoDB ObjectId for association
+ * @returns {Array} Assignments ready for database insertion
+ */
+function parseGradescopeForDB(assignments, userId) {
     return assignments
         .filter(assignment => assignment.due_date) // Filter out null dates
         .map(assignment => ({
@@ -31,7 +40,7 @@ function parseGradescopeForDB(assignments, userEmail) {
             assignment: assignment.assignment,
             status: assignment.status,
             due_date: new Date(assignment.due_date),
-            user_email: userEmail,
+            user_id: userId,
             updated_at: new Date()
         }));
 }

@@ -80,3 +80,26 @@ export const signupLink = style({
         textDecoration: "underline",
     },
 });
+
+// New styles for loading and status messages
+export const loadingWrapper = style({
+    display: "flex",
+    justifyContent: "center",
+    marginTop: rem(24),
+});
+
+export const errorText = style({
+    color: vars.color.carbon,
+    marginTop: rem(16),
+    textAlign: "center",
+    fontSize: vars.typography.fontSize.sm,
+    fontWeight: vars.typography.fontWeight.bold,
+});
+
+export const successText = style({
+    color: vars.color.quietStorm,
+    marginTop: rem(16),
+    textAlign: "center",
+    fontSize: vars.typography.fontSize.sm,
+    fontWeight: vars.typography.fontWeight.bold,
+});

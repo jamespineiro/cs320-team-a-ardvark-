@@ -1,15 +1,28 @@
 const express = require("express");
 const { runGradescope } = require("../services/gradescopeService");
 const { parseGradescopeToCalendar, parseGradescopeForDB } = require("../utils/gradescopeParser");
-const GradescopeAssignment = require("../models/Gradescope");
+const GradescopeAssignment = require("../model/GradescopeAssignmentSchema");
 
 const router = express.Router();
 
+// Middleware to verify authentication (optional - add if you want to enforce auth)
+function requireAuth(req, res, next) {
+    const authHeader = req.headers.authorization;
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return res.status(401).json({ message: "Unauthorized" });
+    }
+    // You could validate the sessionId here against your User model if needed
+    next();
+}
+
 router.post("/fetch-gradescope", async (req, res) => {
-    const { email, password } = req.body;
+    const { email, password, user_id } = req.body;
 
     if (!email || !password)
         return res.status(400).json({ message: "Email and password required" });
+
+    if (!user_id)
+        return res.status(400).json({ message: "User ID required" });
 
     try {
         const result = await runGradescope(email, password);
@@ -21,10 +34,10 @@ router.post("/fetch-gradescope", async (req, res) => {
             });
 
         // Parse assignments for database storage
-        const dbAssignments = parseGradescopeForDB(result, email);
+        const dbAssignments = parseGradescopeForDB(result, user_id);
 
         // Delete old assignments for this user and insert new ones
-        await GradescopeAssignment.deleteMany({ user_email: email });
+        await GradescopeAssignment.deleteMany({ user_id });
         if (dbAssignments.length > 0) {
             await GradescopeAssignment.insertMany(dbAssignments);
         }
@@ -48,13 +61,13 @@ router.post("/fetch-gradescope", async (req, res) => {
 
 // GET route to retrieve stored Gradescope assignments
 router.get("/gradescope-events", async (req, res) => {
-    const { email } = req.query;
+    const { user_id } = req.query;
 
-    if (!email)
-        return res.status(400).json({ message: "Email required" });
+    if (!user_id)
+        return res.status(400).json({ message: "User ID required" });
 
     try {
-        const assignments = await GradescopeAssignment.find({ user_email: email })
+        const assignments = await GradescopeAssignment.find({ user_id })
             .sort({ due_date: 1 });
 
         const calendarEvents = assignments.map(assignment => {

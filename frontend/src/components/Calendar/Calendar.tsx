@@ -4,6 +4,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
 import bootstrapPlugin from "@fullcalendar/bootstrap5";
+import type { EventInput } from "@fullcalendar/core";
 
 // Import Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,10 +13,22 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 // Import vanilla-extract styles
 import * as styles from "./Calendar.css";
 import { useEffect, useState } from "react";
-import { useAuth } from "../auth/AuthProvider";
+import { useAuth } from "../../auth/AuthProvider";
+
+// Define the event type
+interface CalendarEvent extends EventInput {
+  title: string;
+  start: string;
+  extendedProps?: {
+    course?: string;
+    status?: string;
+    originalDueDate?: string;
+  };
+  url?: string;
+}
 
 export default function Calendar() {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
   const { sessionId } = useAuth();
   const BACKEND = 'http://localhost:4000';
 
@@ -34,11 +47,11 @@ export default function Calendar() {
 
         // Load mock events
         const mockRes = await fetch(`${BACKEND}/mock-events`, { headers });
-        const mockData = await mockRes.json();
+        const mockData: CalendarEvent[] = await mockRes.json();
         console.log("Mock events:", mockData);
 
         // Load Gradescope events if user_id is available
-        let gradescopeData = [];
+        let gradescopeData: CalendarEvent[] = [];
         if (userId) {
           const gradescopeRes = await fetch(
               `${BACKEND}/gradescope-events?user_id=${userId}`,
@@ -51,7 +64,7 @@ export default function Calendar() {
         }
 
         // Combine both event sources
-        const allEvents = [...mockData, ...gradescopeData];
+        const allEvents: CalendarEvent[] = [...mockData, ...gradescopeData];
         setEvents(allEvents);
       } catch (err) {
         console.error("Failed to load events:", err);
