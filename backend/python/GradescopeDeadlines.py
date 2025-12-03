@@ -62,12 +62,14 @@ try:
             due_tag = row.find(class_='submissionTimeChart--dueDate')
             due_date = due_tag['datetime'] if due_tag else None
 
-            final_data.append({
-                "course": course_title,
-                "assignment": header.text.strip(),
-                "status": status,
-                "due_date": due_date
-            })
+            # Only add assignments with valid due dates
+            if due_date:
+                final_data.append({
+                    "course": course_title,
+                    "assignment": header.text.strip(),
+                    "status": status,
+                    "due_date": due_date
+                })
 
     print(json.dumps(final_data))
 
