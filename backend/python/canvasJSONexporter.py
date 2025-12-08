@@ -83,6 +83,7 @@ if __name__ == '__main__':
 
     try:
         assignments = fetch_all_assignments(base_url, access_token, course_id)
+       # print_json(assignments)
     except Exception as e:
         print(f"PYTHON FATAL: {e}")
         sys.exit(1)

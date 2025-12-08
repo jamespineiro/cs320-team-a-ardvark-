@@ -8,6 +8,9 @@ function runCanvas(base_url, token, course_id) {
         course_id,
     ]);
 
+    let stdout = "";
+    let stderr = "";
+
     python.stdout.on("data", (data) =>
         console.log("PYTHON:", data.toString())
     );
@@ -19,6 +22,15 @@ function runCanvas(base_url, token, course_id) {
     python.on("close", (code) =>
         console.log(`Python script exited with code ${code}`)
     );
+
+    python.on("close", (code) => {
+        if (code !== 0) return reject(stderr);
+        try {
+            resolve(JSON.parse(stdout));
+        } catch {
+            reject("JSON parse error");
+        }
+    });
 }
 
 module.exports = { runCanvas };
