@@ -34,7 +34,7 @@ Clone the Repo:
 - cd cs320-team-a-ardvark
 
 Set up a .env file:
-- Steps for how to do this are listed in the backend README file
+- Steps for how to do this are listed in the [backend README file](https://github.com/jamespineiro/cs320-team-a-ardvark-/blob/main/backend/documentation/README.md)
 
 Install Dependencies:
 - npm install 

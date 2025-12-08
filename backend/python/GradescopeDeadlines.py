@@ -74,7 +74,6 @@ def scrape_courses_and_assignments(email, password):
             # Get Due Date
             due_tag = row.find(class_='submissionTimeChart--dueDate')
             due_date = due_tag['datetime'] if due_tag else None
-
             final_data.append({
                 "course": course_title,
                 "assignment": header.text.strip(),
@@ -82,6 +81,7 @@ def scrape_courses_and_assignments(email, password):
                 "due_date": due_date
             })
     return final_data
+
 
     # print(json.dumps(final_data))
 
