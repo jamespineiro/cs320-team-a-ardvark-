@@ -16,7 +16,7 @@ function parseCanvasToCalendar(assignments) {
             return true;
         })
         .map(assignment => {
-            const courseCode = `Canvas Course ${assignment.course_id}`;
+            const courseCode = `${assignment.course_id}`;
             const dueDate = new Date(assignment.due_at);
             const formattedDate = dueDate.toISOString().split('T')[0];
             const status = assignment.has_submitted_submissions ? 'Submitted' : 'Pending';
@@ -48,7 +48,7 @@ function parseCanvasForDB(assignments, userId) {
             const status = assignment.has_submitted_submissions ? 'Submitted' : 'Pending';
 
             return {
-                course: `Canvas Course ${assignment.course_id}`,
+                course: `${assignment.course_id}`,
                 assignment: assignment.name,
                 status: status,
                 has_submitted_submissions: assignment.has_submitted_submissions || false,
