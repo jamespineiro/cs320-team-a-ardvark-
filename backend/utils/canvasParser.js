@@ -52,7 +52,7 @@ function parseCanvasForDB(assignments, userId) {
                 assignment: assignment.name,
                 status: status,
                 has_submitted_submissions: assignment.has_submitted_submissions || false,
-                due_at: new Date(assignment.due_at), // Use due_at not due_date!
+                due_at: new Date(assignment.due_at),
                 user_id: userId,
                 updated_at: new Date()
             };

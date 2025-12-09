@@ -10,11 +10,6 @@ const router = express.Router();
 router.post("/fetch-canvas", async (req, res) => {
     const { base_url, access_token, course_id, user_id } = req.body;
 
-    console.log("=== Canvas Fetch Request ===");
-    console.log("Base URL:", base_url);
-    console.log("Course ID:", course_id);
-    console.log("User ID:", user_id);
-
     if (!base_url || !access_token || !course_id || !user_id)
         return res.status(400).json({ detail: "Missing required fields" });
 
@@ -32,9 +27,8 @@ router.post("/fetch-canvas", async (req, res) => {
         console.log("Canvas credentials saved");
 
         // Fetch Canvas assignments
-        console.log("Fetching Canvas assignments...");
         const result = await runCanvas(base_url, access_token, course_id);
-        console.log("Raw Canvas result:", JSON.stringify(result, null, 2));
+
 
         if (result.error) {
             console.error("Canvas fetch error:", result.error);
@@ -80,20 +74,16 @@ router.post("/fetch-canvas", async (req, res) => {
 router.get("/canvas-events", async (req, res) => {
     const { user_id } = req.query;
 
-    console.log("=== Fetching Canvas Events ===");
-    console.log("User ID:", user_id);
-
     if (!user_id)
         return res.status(400).json({ message: "User ID required" });
 
     try {
         const assignments = await CanvasAssignment.find({ user_id })
-            .sort({ due_at: 1 }); // FIXED: Changed from due_date to due_at
+            .sort({ due_at: 1 });
 
-        console.log("Found assignments:", assignments.length);
 
         const calendarEvents = assignments.map(assignment => {
-            const formattedDate = assignment.due_at.toISOString().split('T')[0]; // FIXED: due_at not due_date
+            const formattedDate = assignment.due_at.toISOString().split('T')[0];
 
             return {
                 title: `${assignment.course}: ${assignment.assignment}`,
@@ -104,9 +94,6 @@ router.get("/canvas-events", async (req, res) => {
                 }
             };
         });
-
-        console.log("Returning calendar events:", calendarEvents.length);
-        console.log("Sample event:", calendarEvents[0]);
 
         res.json(calendarEvents);
     } catch (err) {
