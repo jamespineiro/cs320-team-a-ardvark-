@@ -10,6 +10,11 @@ const router = express.Router();
 router.post("/fetch-canvas", async (req, res) => {
     const { base_url, access_token, course_id, user_id } = req.body;
 
+    console.log("=== Canvas Fetch Request ===");
+    console.log("Base URL:", base_url);
+    console.log("Course ID:", course_id);
+    console.log("User ID:", user_id);
+
     if (!base_url || !access_token || !course_id || !user_id)
         return res.status(400).json({ detail: "Missing required fields" });
 
@@ -24,27 +29,37 @@ router.post("/fetch-canvas", async (req, res) => {
             access_token: encrypted.encryptedData,
             iv: encrypted.iv,
         });
+        console.log("Canvas credentials saved");
 
         // Fetch Canvas assignments
+        console.log("Fetching Canvas assignments...");
         const result = await runCanvas(base_url, access_token, course_id);
+        console.log("Raw Canvas result:", JSON.stringify(result, null, 2));
 
-        if (result.error)
+        if (result.error) {
+            console.error("Canvas fetch error:", result.error);
             return res.status(401).json({
                 message: "Canvas fetch failed",
                 detail: result.error,
             });
+        }
 
         // Parse assignments for database storage
         const dbAssignments = parseCanvasForDB(result, user_id);
+        console.log("Parsed DB assignments:", dbAssignments.length);
 
         // Delete old assignments for this user and insert new ones
-        await CanvasAssignment.deleteMany({ user_id });
+        const deleteResult = await CanvasAssignment.deleteMany({ user_id });
+        console.log("Deleted old assignments:", deleteResult.deletedCount);
+
         if (dbAssignments.length > 0) {
-            await CanvasAssignment.insertMany(dbAssignments);
+            const insertResult = await CanvasAssignment.insertMany(dbAssignments);
+            console.log("Inserted new assignments:", insertResult.length);
         }
 
         // Parse assignments for calendar format
         const calendarEvents = parseCanvasToCalendar(result);
+        console.log("Calendar events:", calendarEvents.length);
 
         res.json({
             message: "Canvas connection saved + assignments synced",
@@ -65,15 +80,20 @@ router.post("/fetch-canvas", async (req, res) => {
 router.get("/canvas-events", async (req, res) => {
     const { user_id } = req.query;
 
+    console.log("=== Fetching Canvas Events ===");
+    console.log("User ID:", user_id);
+
     if (!user_id)
         return res.status(400).json({ message: "User ID required" });
 
     try {
         const assignments = await CanvasAssignment.find({ user_id })
-            .sort({ due_date: 1 });
+            .sort({ due_at: 1 }); // FIXED: Changed from due_date to due_at
+
+        console.log("Found assignments:", assignments.length);
 
         const calendarEvents = assignments.map(assignment => {
-            const formattedDate = assignment.due_date.toISOString().split('T')[0];
+            const formattedDate = assignment.due_at.toISOString().split('T')[0]; // FIXED: due_at not due_date
 
             return {
                 title: `${assignment.course}: ${assignment.assignment}`,
@@ -84,6 +104,9 @@ router.get("/canvas-events", async (req, res) => {
                 }
             };
         });
+
+        console.log("Returning calendar events:", calendarEvents.length);
+        console.log("Sample event:", calendarEvents[0]);
 
         res.json(calendarEvents);
     } catch (err) {

@@ -1,89 +1,65 @@
 import requests
-import time
-import json
 import sys
-from urllib.parse import urlparse, urljoin
-from datetime import datetime
+import json
 
-def fetch_all_assignments(base_url, access_token, course_id, max_retries=5):
-    api_path = f"/api/v1/courses/{course_id}/assignments"
-    params = {
-        'per_page': 100,
-        'include[]': ['all_dates', 'submission']
-    }
+def fetch_canvas_assignments(base_url, access_token, course_id):
+    """
+    Fetch all assignments from a Canvas course.
+    Debug messages go to stderr, JSON output goes to stdout.
+    """
 
-    if not base_url.startswith(('http://', 'https://')):
-        base_url = 'https://' + base_url
-
-    url = urljoin(base_url, api_path)
-    all_assignments = []
+    # Construct the API URL
+    url = f"https://{base_url}/api/v1/courses/{course_id}/assignments"
 
     headers = {
-        'Authorization': f'Bearer {access_token}',
-        'Accept': 'application/json',
+        "Authorization": f"Bearer {access_token}"
     }
 
-    print(f"Starting fetch for Course ID: {course_id}...")
+    params = {
+        "per_page": 100,
+        "include[]": ["submission"]  # Include submission status
+    }
 
-    while url:
-        response = None
-        current_retries = 0
+    all_assignments = []
 
-        while current_retries < max_retries:
-            try:
-                if '?' not in url:
-                    response = requests.get(url, headers=headers, params=params)
-                else:
-                    response = requests.get(url, headers=headers)
+    # Debug output goes to stderr
+    print(f"Starting fetch for Course ID: {course_id}...", file=sys.stderr)
 
-                response.raise_for_status()
-                break
-            except requests.exceptions.RequestException as e:
-                current_retries += 1
-                if current_retries >= max_retries:
-                    print(f"\nFATAL: Failed after {max_retries} attempts. Error: {e}")
-                    raise
+    try:
+        while url:
+            response = requests.get(url, headers=headers, params=params)
 
-                delay = 2 ** current_retries
-                print(f"Warning: Request failed (Status: {response.status_code if response else 'N/A'}). Retrying in {delay}s...")
-                time.sleep(delay)
+            if response.status_code != 200:
+                print(f"Error: HTTP {response.status_code}", file=sys.stderr)
+                print(f"Response: {response.text}", file=sys.stderr)
+                sys.exit(1)
 
-        data = response.json()
-        all_assignments.extend(data)
+            assignments = response.json()
+            all_assignments.extend(assignments)
 
-        url = None
-        link_header = response.headers.get('Link')
-        if link_header:
-            links = {rel: href for href, rel in requests.utils.parse_header_links(link_header)}
-            if 'next' in links:
-                url = links['next']
-                print(f"Fetched {len(data)} assignments. Moving to next page...")
+            # Check for pagination
+            if 'next' in response.links:
+                url = response.links['next']['url']
+                params = {}  # Clear params since URL includes them
             else:
-                print(f"Fetched {len(data)} assignments. No more pages found.")
-        else:
-             print(f"Fetched {len(data)} assignments. No Link header, assuming single page.")
+                url = None
 
-    return all_assignments
+        print(f"Fetched {len(all_assignments)} assignments. No more pages found.", file=sys.stderr)
 
-#Print JSON to stdout
-def print_json(assignments):
-    export_data = [a for a in assignments if a.get('name')]
-    print(json.dumps(export_data, indent=4))
-    return export_data
+        # ONLY print JSON to stdout
+        print(json.dumps(all_assignments, indent=2))
 
+    except Exception as e:
+        print(f"Exception occurred: {str(e)}", file=sys.stderr)
+        sys.exit(1)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) != 4:
-        print("PYTHON ERROR: Expected 3 arguments: base_url access_token course_id")
+        print("Usage: python canvasJSONexporter.py <base_url> <access_token> <course_id>", file=sys.stderr)
         sys.exit(1)
 
     base_url = sys.argv[1]
     access_token = sys.argv[2]
     course_id = sys.argv[3]
 
-    try:
-        assignments = fetch_all_assignments(base_url, access_token, course_id)
-       # print_json(assignments)
-    except Exception as e:
-        print(f"PYTHON FATAL: {e}")
-        sys.exit(1)
+    fetch_canvas_assignments(base_url, access_token, course_id)
