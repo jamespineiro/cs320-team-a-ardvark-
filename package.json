@@ -9,5 +9,8 @@
   },
   "devDependencies": {
     "concurrently": "^8.2.0"
+  },
+  "dependencies": {
+    "supertest": "^7.1.4"
   }
 }

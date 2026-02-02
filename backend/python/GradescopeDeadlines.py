@@ -2,23 +2,27 @@ import sys, json, requests
 from bs4 import BeautifulSoup
 
 # 1. Get Credentials
+"""
 if len(sys.argv) < 3:
     print(json.dumps({"error": "Missing credentials"}))
     sys.exit(1)
 
 email, password = sys.argv[1], sys.argv[2]
 session = requests.Session()
+"""
+
 BASE = "https://www.gradescope.com"
 
-try:
+def login(session, email, password):
     # 2. Login
     login_page = session.get(BASE + "/login")
     soup = BeautifulSoup(login_page.text, 'html.parser')
 
     token_field = soup.find('input', {'name': 'authenticity_token'})
     if not token_field:
-        print(json.dumps({"error": "Could not load login page properly"}))
-        sys.exit(1)
+        raise Exception("Failed to load Login page")
+        # print(json.dumps({"error": "Could not load login page properly"}))
+        # sys.exit(1)
 
     response = session.post(BASE + "/login", data={
         'authenticity_token': token_field['value'],
@@ -30,8 +34,17 @@ try:
 
     # Check for failure or any 2 factor authentication
     if 'account' not in response.url:
-        print(json.dumps({"error": "Login failed - check credentials"}))
-        sys.exit(1)
+        raise Exception("Login failed")
+        # print(json.dumps({"error": "Login failed - check credentials"}))
+        # sys.exit(1)
+    
+    return session
+
+
+def scrape_courses_and_assignments(email, password):
+    # create session
+    session = requests.Session()
+    login(session, email, password)
 
     # 3. Scrape Courses & Assignments
     final_data = []
@@ -61,18 +74,27 @@ try:
             # Get Due Date
             due_tag = row.find(class_='submissionTimeChart--dueDate')
             due_date = due_tag['datetime'] if due_tag else None
+            final_data.append({
+                "course": course_title,
+                "assignment": header.text.strip(),
+                "status": status,
+                "due_date": due_date
+            })
+    return final_data
 
-            # Only add assignments with valid due dates
-            if due_date:
-                final_data.append({
-                    "course": course_title,
-                    "assignment": header.text.strip(),
-                    "status": status,
-                    "due_date": due_date
-                })
 
-    print(json.dumps(final_data))
+    # print(json.dumps(final_data))
 
-except Exception as e:
-    # Return the actual error message
-    print(json.dumps({"error": f"Script Error: {str(e)}"}))
+if __name__ == "__main__":
+    import sys, json
+    if len(sys.argv) < 3:
+        print(json.dumps({"error": "Missing credentials"}))
+        sys.exit(1)
+    email, password = sys.argv[1], sys.argv[2]
+    try:
+        final_data = scrape_courses_and_assignments(email, password)
+        # data = main(sys.argv[1], sys.argv[2])
+        print(json.dumps(final_data))
+    except Exception as e:
+        # Return the actual error message
+        print(json.dumps({"error": f"Script Error: {str(e)}"}))
